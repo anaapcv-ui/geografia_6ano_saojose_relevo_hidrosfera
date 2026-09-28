@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Leitura Guiada — Geografia 6º ano | Corte do Terreno</title>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="wrap">
+
+<header class="topo">
+  <h1 class="titulo"><span class="sub">Corte do Terreno</span>Leitura Guiada</h1>
+  <div class="faixa">
+    <span>6º ano · Geografia</span>
+    <span>Relevo e Hidrosfera</span>
+    <span>pp. 164-165 · 180-183 · 204-210 · 225-228</span>
+    <span>Avaliação: 29/09</span>
+  </div>
+  <p style="margin:0"><span class="selo">Camada 1 de 5 — a descida começa aqui</span></p>
+</header>
+
+<nav class="abas">
+  <a href="leitura-guiada.html" class="atual">📖 1. Leitura Guiada</a>
+  <a href="quiz.html">🎯 2. Quiz</a>
+  <a href="resumo.html">🗺️ 3. Resumo</a>
+  <a href="simulado.html">📝 4. Simulado</a>
+  <a href="index.html">🏠 Início</a>
+</nav>
+
+<div class="painel">
+  <div class="status" id="status">Carregando seu progresso…</div>
+  <div class="btns">
+    <button id="btExportar">📥 Exportar</button>
+    <button id="btImportar">📤 Importar</button>
+    <button id="btZerar">🗑️ Zerar tudo</button>
+  </div>
+</div>
+<input type="file" id="arquivo" accept="application/json" style="display:none">
+
+<div class="progresso">
+  <div class="barra"><i id="barra"></i></div>
+  <p id="txtProg">Camada 0 de 12 concluída.</p>
+</div>
+
+<p class="aviso-caixa">
+<b>Como funciona:</b> você vai descer por um corte do terreno, camada por camada — o relevo nas de cima, a água nas de baixo.
+Leia a camada, <b>escreva</b> as 3 respostas com as suas palavras e clique em <b>Conferir</b>. Só depois disso aparecem
+a resposta modelo e o checklist para você comparar. Se a resposta vier igualzinha ao texto, o material pede para reescrever.
+Escrever com as suas palavras é o que faz a matéria grudar — não pule essa parte.
+</p>
+
+<div id="blocos"></div>
+
+<section class="pegadinhas">
+  <h2>⚠️ As 10 pegadinhas desta prova</h2>
+  <ol>
+    <li><b>Intemperismo não é erosão.</b> O intemperismo <u>quebra e decompõe</u> a rocha no lugar onde ela está. A erosão <u>remove e transporta</u> os pedaços soltos. Os dois andam juntos, mas não são a mesma coisa.</li>
+    <li><b>Planalto × planície.</b> No planalto <u>predomina a erosão</u> (o desgaste supera o acúmulo). Na planície <u>predomina a sedimentação</u> (recebe mais sedimento do que perde). Os dois processos acontecem nos dois lugares — o que muda é qual deles vence.</li>
+    <li><b>Depressão relativa NÃO fica abaixo do nível do mar.</b> Ela é só mais baixa que as regiões próximas, com altitudes que costumam variar de 100 a 500 metros acima do nível do mar. Abaixo do nível do mar é a <u>absoluta</u> (mar Morto, cerca de 400 m abaixo).</li>
+    <li><b>Chapada e serra ficam DENTRO do planalto.</b> Chapada tem <u>topo plano</u> e queda acentuada, que lembra um degrau. Serra tem <u>desníveis acentuados</u>. Nenhuma das duas é uma forma separada do planalto.</li>
+    <li><b>Agente interno constrói, agente externo desgasta.</b> Os internos vêm do interior da Terra (placas tectônicas) e <u>levantam</u> o relevo. Os externos (chuva, vento, rios, mares, geleiras) <u>esculpem e desgastam</u> — e as <u>ações humanas entram nos externos</u>.</li>
+    <li><b>97,2% é a água OCEÂNICA.</b> As águas continentais (doces) são só 2,8% do total, e menos de 1% de toda a água do planeta está realmente disponível para o consumo humano.</li>
+    <li><b>A maior parte da água doce não está nos rios.</b> Está nas <u>geleiras</u> (cerca de 76% da água doce). Lagos e rios juntos são apenas 0,013% de toda a água do planeta.</li>
+    <li><b>Rio de planalto × rio de planície.</b> Planalto: relevo acidentado, cachoeiras, água veloz → bom para <u>hidrelétrica</u>. Planície: relevo plano, água lenta, meandros → bom para <u>transporte</u>. Não troque os dois.</li>
+    <li><b>Nascente, afluente, confluência e foz.</b> Nascente é onde o rio <u>começa</u>; afluente é o rio que <u>deságua em outro</u>; confluência é o <u>ponto de encontro</u> entre dois rios; foz é onde o rio <u>termina</u>.</li>
+    <li><b>Asfalto não faz a água sumir.</b> Asfalto e concreto <u>impermeabilizam</u> o solo: a infiltração diminui e o escoamento superficial <u>aumenta</u>. É exatamente por isso que a cidade alaga — e não o contrário.</li>
+  </ol>
+</section>
+
+<h2 class="secao-tit">🧭 Cobertura: tópico → camada</h2>
+<div class="tabela-wrap">
+<table class="tb">
+  <thead><tr><th>Tópico do escopo</th><th>Páginas</th><th>Camada</th></tr></thead>
+  <tbody>
+    <tr><td>O que é relevo; agentes internos e externos</td><td>181 + aula</td><td>Camada 1</td></tr>
+    <tr><td>Intemperismo (físico, químico e biológico)</td><td>164 + aula</td><td>Camada 2</td></tr>
+    <tr><td>Erosão, transporte e sedimentação</td><td>165 + aula</td><td>Camada 3</td></tr>
+    <tr><td>Cadeias montanhosas e placas tectônicas</td><td>181 + aula</td><td>Camada 4</td></tr>
+    <tr><td>Planaltos, chapadas e serras</td><td>183 + aula</td><td>Camada 5</td></tr>
+    <tr><td>Depressões absolutas e relativas</td><td>182 + aula</td><td>Camada 6</td></tr>
+    <tr><td>Planícies e ocupação humana do relevo</td><td>180, 182 + aula</td><td>Camada 7</td></tr>
+    <tr><td>Hidrosfera, distribuição da água, geleiras e ciclo hidrológico</td><td>204-205, 208 + aula</td><td>Camada 8</td></tr>
+    <tr><td>Oceanos e mares</td><td>aula</td><td>Camada 9</td></tr>
+    <tr><td>Rios e bacias hidrográficas (Tubarão e Brasil)</td><td>210 + aula</td><td>Camada 10</td></tr>
+    <tr><td>Escoamento superficial e impermeabilização</td><td>206</td><td>Camada 11</td></tr>
+    <tr><td>Águas subterrâneas, aquíferos e usos da água</td><td>209, 225-228 + aula</td><td>Camada 12</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="rodape">
+  <span>Próximo material da sequência →</span>
+  <a href="quiz.html">🎯 Ir para o Quiz</a>
+</div>
+
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <h3 id="mTit">Aviso</h3>
+    <p id="mTxt"></p>
+    <div class="acoes">
+      <button id="mNao" style="display:none">Cancelar</button>
+      <button class="principal" id="mSim">Entendi</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ================= DADOS ================= */
+var BLOCOS = [
+{n:1,t:"Cume da Serra — o que é relevo",pg:"p. 181 + aula",
+ html:`
+ <p>Olhe pela janela de um ônibus numa viagem longa: aparece morro, aparece planície, aparece um paredão de pedra. Esse <span class="termo">conjunto de formas que compõem a superfície terrestre</span> é o que chamamos de <b>relevo</b>. Montanhas, morros, serras, planícies e vales são todos formas de relevo.</p>
+ <p>A primeira coisa importante é que o relevo <b>nunca fica pronto</b>. A formação dele é dinâmica e contínua: está acontecendo agora, enquanto você lê. Só que é devagar — tão devagar que a gente não enxerga em uma vida inteira.</p>
+ <p>Quem faz esse trabalho são dois times que jogam contra:</p>
+ <ul>
+   <li><b>Agentes internos</b> — vêm do interior da Terra, do movimento das placas tectônicas. Eles <span class="destaque">constroem e levantam</span>: originam as grandes elevações.</li>
+   <li><b>Agentes externos</b> — atuam por fora: chuva, rios, ventos, geleiras, mares. Eles <span class="destaque">desgastam, modelam e esculpem</span> o que os internos levantaram. E atenção: as <b>ações humanas</b> também entram neste time.</li>
+ </ul>
+ <p>As principais formas do relevo terrestre são quatro: <b>cadeias montanhosas</b> (também chamadas cordilheiras), <b>depressões</b>, <b>planícies</b> e <b>planaltos</b>. Cada uma é classificada de acordo com o processo que a formou.</p>
+ <p>Por que isso importa na vida real? Porque o relevo influencia quase tudo: a construção de túneis, estradas, casas e prédios; a agricultura; a circulação das águas na superfície; a distribuição da vegetação; o clima; e a paisagem que você vê. No Brasil, a maior parte do relevo apresenta <b>altitudes pouco elevadas</b> — nosso território é composto principalmente por planaltos, planícies e depressões.</p>`,
+ q:["Com suas palavras, qual é a diferença entre os agentes internos e os agentes externos do relevo?",
+    "Uma prefeitura vai abrir uma estrada nova numa região cheia de morros. Explique, com um exemplo seu, por que conhecer o relevo faz diferença nessa obra.",
+    "Um colega afirma: “o relevo da Terra já está pronto, ele não muda mais”. Explique por que essa frase está errada."],
+ a:["Os agentes internos vêm de dentro da Terra (movimento das placas tectônicas) e constroem, levantando o relevo. Os agentes externos agem por fora — chuva, rios, ventos, geleiras, mares e também as ações humanas — e desgastam, modelam e esculpem as formas.",
+    "Resposta pessoal. Ex.: em região de morro é preciso decidir se a estrada vai contornar a encosta, cortar o morro ou passar por um túnel; isso muda o custo, o tempo da obra e o risco de deslizamento. O relevo também define onde a água da chuva vai escorrer e onde pode faltar apoio para a pista.",
+    "Porque a formação do relevo é um processo dinâmico e contínuo: os agentes internos continuam levantando e os externos continuam desgastando. A mudança é lenta demais para a gente perceber, mas não parou."]},
+
+{n:2,t:"Rocha Exposta — o intemperismo",pg:"p. 164 + aula",
+ html:`
+ <p>Descendo uma camada, chegamos à rocha exposta ao tempo. Aqui começa o trabalho dos agentes externos, e ele tem um nome: <b>intemperismo</b>.</p>
+ <p>Intemperismo é o <span class="termo">processo de decomposição e desagregação das rochas e de seus minerais</span>, que acontece por causa da umidade, dos ventos, da temperatura e dos seres vivos. Repare numa palavra-chave: a rocha ainda está <b>no lugar dela</b>. O intemperismo estraga a rocha ali mesmo; ele não carrega nada para longe — isso é tarefa da próxima camada.</p>
+ <p>Existem três tipos, e a prova adora perguntar a diferença:</p>
+ <ul>
+   <li><b>Intemperismo físico</b> (ou mecânico) — as alterações de temperatura e a força dos ventos provocam a desagregação das rochas. A rocha se parte em pedaços menores, mas continua sendo o mesmo material. É o desgaste e a fragmentação.</li>
+   <li><b>Intemperismo químico</b> — a água líquida <b>decompõe quimicamente</b> os minerais da rocha. Aqui há um rearranjo químico: o material deixa de ser o que era.</li>
+   <li><b>Intemperismo biológico</b> — quem trabalha são os seres vivos. Bactérias e fungos se proliferam e contribuem para decompor a rocha; as raízes das plantas desagregam a rocha pela pressão que fazem. Como os seres vivos transformam a rocha física e quimicamente ao mesmo tempo, esse tipo também é chamado de <b>bioquímico</b>.</li>
+ </ul>
+ <div class="ex"><b>Como o físico funciona na prática:</b> num lugar de dias muito quentes e noites muito frias, a rocha dilata de dia e encolhe de noite. De tanto vai e volta, ela racha — sem mudar de composição.</div>
+ <p>Uma pegadinha clássica: <span class="destaque">os três tipos podem ocorrer ao mesmo tempo</span>. A água que fragmenta e desgasta o material rochoso é a mesma que reage quimicamente com ele e que forma soluções ácidas quando entra em contato com a matéria orgânica do solo.</p>`,
+ q:["O que é intemperismo? Explique com suas palavras.",
+    "Numa calçada velha, a raiz de uma árvore rachou o concreto e, dentro da rachadura, o cimento virou um pó esbranquiçado. Quais tipos de intemperismo aparecem nessa cena? Justifique cada um.",
+    "Explique para um colega mais novo a diferença entre intemperismo físico e químico, usando um exemplo inventado por você."],
+ a:["É o processo de decomposição e desagregação das rochas e de seus minerais, provocado pela umidade, pelos ventos, pela temperatura e pelos seres vivos. A rocha é estragada no próprio lugar onde está.",
+    "Aparecem o biológico e o químico (e também o físico). A raiz da árvore fazendo pressão e rachando o concreto é intemperismo biológico. O cimento virando pó, com o material mudando de composição, é intemperismo químico. A rachadura em si, quebrando o material em pedaços, é intemperismo físico.",
+    "Resposta pessoal. Ex.: o físico é como quebrar um biscoito com a mão — vira farelo, mas continua sendo biscoito. O químico é como deixar o biscoito no leite — ele se desmancha e vira outra coisa. Na rocha, o físico quebra pela temperatura e pelo vento; o químico decompõe pela ação da água."]},
+
+{n:3,t:"Encosta Viva — erosão e sedimentação",pg:"p. 165 + aula",
+ html:`
+ <p>O intemperismo deixou a rocha quebrada e solta. Esses fragmentos de rocha têm nome: <b>sedimentos</b>. Agora alguém precisa carregá-los morro abaixo — e esse alguém é a <b>erosão</b>.</p>
+ <p>Erosão é o processo de <span class="termo">remoção e transporte</span> dos fragmentos de rochas resultantes do intemperismo. Quem faz o transporte são os ventos, as geleiras, a água dos rios, as chuvas e os mares.</p>
+ <p>A velocidade e a intensidade dos processos erosivos dependem de vários fatores: o <b>clima</b>, o <b>tipo de rocha</b>, o <b>solo</b> e o <b>relevo local</b>. Por isso a erosão não é igual em todo lugar:</p>
+ <ul>
+   <li>Em regiões <b>desérticas e semiáridas</b>, os ventos têm grande atuação nos processos erosivos — falta água e falta vegetação para segurar o material.</li>
+   <li>Em áreas de clima <b>tropical e temperado</b>, onde a água é abundante, a erosão provocada pela água dos rios é muito mais intensa.</li>
+ </ul>
+ <p>Intemperismo e erosão agem continuamente, um depois do outro, e o resultado é o <b>desgaste do relevo</b>: as formas vão ficando mais baixas e mais arredondadas com o tempo.</p>
+ <p>E para onde vai todo esse material? Os sedimentos originários do desgaste são transportados das partes mais altas para as partes mais baixas do terreno: fundo de lagos, lagoas, rios e mares. O processo de <b>deposição de sedimentos</b> é chamado de <b>sedimentação</b>. Com o tempo, esses depósitos vão se compactando — e é dessa compactação que se originam as <b>rochas sedimentares</b>.</p>
+ <div class="ex"><b>A linha de produção da paisagem:</b> rocha bruta → intemperismo (quebra) → erosão (remove e transporta) → sedimentação (deposita) → rocha sedimentar (compacta).</div>`,
+ q:["Qual é a diferença entre intemperismo e erosão?",
+    "Explique por que numa região desértica o vento é o principal agente de erosão, enquanto numa região tropical o principal é a água dos rios.",
+    "Uma família construiu a casa no pé de um morro sem vegetação. Depois de uma chuva forte, o quintal amanheceu cheio de terra. Explique o que aconteceu usando as palavras erosão, transporte e sedimentação."],
+ a:["O intemperismo decompõe e desagrega a rocha no lugar onde ela está. A erosão é o passo seguinte: ela remove e transporta os fragmentos que o intemperismo soltou.",
+    "Porque a intensidade da erosão depende do clima. No deserto e no semiárido falta água e falta vegetação, então sobra o vento para remover e transportar o material. No clima tropical e temperado a água é abundante, então a erosão provocada pelos rios e pelas chuvas é muito mais forte.",
+    "A chuva removeu os fragmentos soltos do morro, que estava sem vegetação para segurá-los (erosão). A água levou esse material encosta abaixo (transporte). Quando a água perdeu força ao chegar no terreno plano do quintal, largou a terra ali (sedimentação)."]},
+
+{n:4,t:"Degrau das Montanhas — cadeias montanhosas",pg:"p. 181 + aula",
+ html:`
+ <p>Agora olhamos para o ponto mais alto do corte. As <b>cadeias montanhosas</b>, também chamadas de <b>cordilheiras</b>, são as <span class="termo">maiores elevações da superfície terrestre</span>. Um conjunto de montanhas forma uma cordilheira.</p>
+ <p>Elas se originam do <b>encontro de placas tectônicas</b> — ou seja, são obra dos agentes internos. O que acontece nesse encontro depende de quem bate em quem:</p>
+ <ul>
+   <li><b>Placa oceânica × placa oceânica:</b> a placa mais densa mergulha sob a menos densa.</li>
+   <li><b>Placa oceânica × placa continental:</b> a oceânica, por ser mais densa, sofre <b>subducção</b> (mergulha por baixo). A continental sofre <b>soerguimento</b> (elevação) e <b>dobramento</b> — ela se enruga para cima, como um tapete empurrado contra a parede.</li>
+ </ul>
+ <p>Por isso as cadeias montanhosas apresentam formas <b>íngremes</b>: paredões inclinados, picos pontudos, pouca área plana.</p>
+ <p>Tem um detalhe que a prova costuma cobrar: as cadeias montanhosas são <b>formações geológicas de períodos geológicos recentes</b>. Como são “novas”, foram submetidas a <span class="destaque">pouco desgaste erosivo ao longo do tempo</span> — e é justamente por isso que continuam altas e pontudas. Isso é o que chamamos de <b>relevo jovem</b>. Quanto mais velha a forma, mais os agentes externos já tiveram tempo de arredondar e rebaixar.</p>
+ <p>As cordilheiras mais famosas do mundo: a <b>dos Andes</b>, na América do Sul; as <b>montanhas Rochosas</b>, na América do Norte; e a <b>do Himalaia</b>, na Ásia.</p>`,
+ q:["Como se formam as cadeias montanhosas?",
+    "Imagine duas montanhas: a primeira tem picos pontudos e encostas muito íngremes; a segunda tem topo arredondado e é bem mais baixa. Qual das duas é o relevo mais jovem? Justifique.",
+    "Quando uma placa oceânica encontra uma placa continental, o que acontece com cada uma delas? Explique com suas palavras."],
+ a:["Elas se originam do encontro de placas tectônicas, ou seja, pela ação dos agentes internos. O choque entre as placas levanta o terreno e forma as maiores elevações da superfície.",
+    "A primeira, de picos pontudos e encostas íngremes. Formas pontudas indicam que os agentes externos ainda tiveram pouco tempo para desgastar — é relevo jovem. O topo arredondado e baixo da segunda mostra muito tempo de erosão.",
+    "A placa oceânica é mais densa, por isso ela mergulha por baixo — é a subducção. A placa continental, mais leve, é empurrada para cima: sofre soerguimento e dobramento, enrugando-se e formando as montanhas."]},
+
+{n:5,t:"Patamar dos Planaltos — planaltos, chapadas e serras",pg:"p. 183 + aula",
+ html:`
+ <p>Descemos um degrau. Os <b>planaltos</b>, também chamados de <b>platôs</b>, são <span class="termo">terrenos extensos e pouco acidentados</span>, situados em uma faixa de altitude relativamente alta e <b>mais elevados que as áreas ao redor</b>.</p>
+ <p>Aqui está a marca registrada do planalto, e é o que mais cai em prova: <span class="destaque">no planalto, os processos erosivos predominam em comparação aos de sedimentação</span>. Ou seja, o processo de erosão supera o de acumulação de sedimentos. O planalto <b>perde</b> mais material do que recebe — ele é uma superfície bastante desgastada pelo vento e pelas águas de rios e de chuva. Com esse desgaste, os sedimentos que saem dali se depositam nas áreas próximas mais baixas.</p>
+ <p>Um planalto pode ter <b>milhares de quilômetros de extensão</b>. Justamente por ser tão grande, a superfície dele não é lisa: pode apresentar outras formas de relevo dentro de si — <b>serras, morros, vales, colinas e chapadas</b>.</p>
+ <ul>
+   <li><b>Chapadas</b> — formas com <b>quedas acentuadas</b>, que lembram um degrau, e <b>topo plano</b>. A Chapada Diamantina, na Bahia, é o exemplo clássico: a superfície plana no topo contrasta com as escarpas íngremes que formam suas bordas, moldadas pelos processos erosivos.</li>
+   <li><b>Serras</b> — formas de relevo com <b>desníveis acentuados</b>, sobe e desce forte.</li>
+ </ul>
+ <p>Cuidado com a confusão mais comum: chapada e serra <b>não são formas separadas</b> do planalto. Elas estão <b>dentro</b> dele, são feições que aparecem na superfície de um planalto.</p>
+ <p>E para localizar tudo isso num mapa: por convenção, as áreas mais elevadas e acidentadas são representadas com <b>tons de marrom</b>, e as mais baixas e planas, com <b>tons de verde</b>.</p>`,
+ q:["O que é um planalto e o que o diferencia de uma planície?",
+    "Você está diante de um paredão de pedra com o topo totalmente plano e uma queda bem acentuada, parecida com um degrau gigante. Que forma de relevo é essa? Justifique pela descrição.",
+    "Os sedimentos que saem de um planalto vão parar onde? Explique o caminho que eles fazem."],
+ a:["O planalto é um terreno extenso e pouco acidentado, situado em altitude relativamente alta e mais elevado que as áreas ao redor. A diferença principal está no processo: no planalto predomina a erosão (perde mais material do que recebe), enquanto na planície predomina a sedimentação (recebe mais do que perde).",
+    "É uma chapada. As duas marcas que a descrição dá são exatamente as dela: topo plano e quedas acentuadas, que lembram um degrau. E a chapada é uma forma que aparece dentro de um planalto.",
+    "Eles são desgastados do planalto pelo vento e pelas águas de rios e de chuva, são transportados pela erosão e acabam se depositando nas áreas próximas mais baixas, como as planícies, o fundo de lagos, rios e mares."]},
+
+{n:6,t:"Fundo da Depressão — depressões absolutas e relativas",pg:"p. 182 + aula",
+ html:`
+ <p>Continuando a descida, chegamos às áreas rebaixadas. As <b>depressões</b> são <span class="termo">áreas mais baixas que o nível do mar ou que as demais formas de relevo que as circundam</span>. São superfícies planas ou levemente onduladas e bastante desgastadas.</p>
+ <p>Elas podem se formar de duas maneiras: por <b>falhas tectônicas</b> (agente interno) ou por <b>erosão</b> (agente externo).</p>
+ <p>A classificação é a parte que mais derruba gente na prova. São dois tipos, e a diferença está em <b>com o que você está comparando</b>:</p>
+ <ul>
+   <li><b>Depressão absoluta</b> — está em nível <b>inferior ao do mar</b>, ou seja, abaixo do nível do mar. O exemplo do livro é o <b>mar Morto</b>, entre a Jordânia e Israel, com cerca de <b>400 metros abaixo do nível do mar</b>: a maior depressão absoluta do mundo.</li>
+   <li><b>Depressão relativa</b> — está em nível inferior ao de <b>outras regiões próximas</b>. Ela é mais baixa que a vizinhança, mas continua <b>acima</b> do nível do mar. Em geral apresenta ondulações suaves e altitudes que variam de <b>100 a 500 metros acima do nível do mar</b>.</li>
+ </ul>
+ <p>O jeito mais fácil de não errar: <span class="destaque">“absoluta” compara com o mar; “relativa” compara com os vizinhos</span>. Se a questão disser que o terreno está abaixo do nível do mar, é absoluta. Se disser apenas que é mais baixo que os morros ao redor, é relativa — mesmo que a altitude seja de 300 metros.</p>
+ <p>No Brasil, as depressões são uma das três grandes formas do nosso relevo, ao lado dos planaltos e das planícies.</p>`,
+ q:["Qual é a diferença entre depressão absoluta e depressão relativa?",
+    "Um terreno está a 250 metros acima do nível do mar, mas é mais baixo que todos os morros que o cercam. Que tipo de depressão é essa? Justifique.",
+    "Um colega diz que toda depressão fica abaixo do nível do mar. Explique, com suas palavras, por que ele está errado."],
+ a:["A absoluta está em nível inferior ao do mar, ou seja, abaixo do nível do mar. A relativa está em nível inferior ao de outras regiões próximas, sendo mais baixa que a vizinhança, mas ainda acima do nível do mar (em geral entre 100 e 500 metros de altitude).",
+    "É uma depressão relativa. Ela está acima do nível do mar (250 metros), mas é mais baixa que as regiões próximas — e é exatamente essa comparação com o entorno que define a depressão relativa.",
+    "Porque só a depressão absoluta fica abaixo do nível do mar, como o mar Morto. A depressão relativa fica acima do nível do mar e é chamada de depressão apenas porque é mais baixa do que as regiões vizinhas."]},
+
+{n:7,t:"Terraço da Planície — planícies e a ocupação humana",pg:"pp. 180 e 182 + aula",
+ html:`
+ <p>Chegamos ao terreno plano. As <b>planícies</b> são <span class="termo">áreas relativamente planas formadas pelo depósito de sedimentos vindos de terrenos mais elevados</span>. Aquele material que saiu do planalto na Camada 5? Boa parte dele parou aqui.</p>
+ <p>Embora os processos erosivos também atuem sobre a planície, ali <b>prevalece o processo de sedimentação</b>: a área recebe mais sedimentos do que perde. É exatamente o contrário do planalto — e é esse par de opostos que a prova gosta de cobrar.</p>
+ <p>A maior parte das planícies se formou pelo depósito de sedimentos trazidos pelos rios ao longo de milhões de anos. Por causa da forma aplainada e da fertilidade de seus solos, desde a Antiguidade as planícies têm sido <b>intensamente ocupadas</b>. O exemplo mais famoso é o do <b>rio Nilo</b>: a sociedade egípcia se desenvolveu às margens dele porque, durante as cheias, o rio inundava e fertilizava o solo, tornando possíveis as atividades agrícolas numa região árida.</p>
+ <p>E isso nos leva a uma pergunta maior: <b>por que o relevo importa para onde as pessoas moram?</b></p>
+ <ul>
+   <li>Ao longo da história, os seres humanos procuraram se fixar em áreas mais <b>próximas aos rios</b>, que possibilitavam a agricultura e o transporte de pessoas, animais e mercadorias.</li>
+   <li>Alguns povos, no entanto, fixaram-se em áreas de <b>altas montanhas</b>, onde o relevo é íngreme e a sobrevivência é mais difícil. Como as áreas de cultivo são restritas nesse tipo de relevo, eles desenvolveram o <b>terraceamento</b>: a abertura de terraços (degraus) nas encostas das montanhas, onde é possível praticar a agricultura. Essa técnica é usada em países como Filipinas, Indonésia, China e Vietnã.</li>
+   <li>Conhecer as formas de relevo é importante para <b>planejar</b>: o crescimento das cidades, a ocupação de encostas, a construção de rodovias e túneis.</li>
+   <li>O relevo também foi importante para a <b>defesa militar</b>. Na Europa medieval, castelos e fortes eram construídos em áreas elevadas para que os inimigos pudessem ser vistos de longe e a defesa fosse mais bem planejada.</li>
+ </ul>`,
+ q:["Por que na planície predomina a sedimentação e no planalto predomina a erosão?",
+    "Explique por que as planícies foram tão ocupadas pelas sociedades antigas. Use o exemplo do rio Nilo ou um exemplo seu.",
+    "Um povo vive numa montanha muito íngreme e precisa plantar para se alimentar. Que técnica ele pode usar e por que ela resolve o problema?"],
+ a:["Porque o planalto é mais elevado que as áreas ao redor: o vento e as águas retiram material dali e o levam para baixo, então o desgaste supera o acúmulo. A planície é o terreno baixo que recebe esse material vindo das áreas mais altas, por isso ela ganha mais sedimentos do que perde.",
+    "Porque as planícies são planas e têm solos férteis, o que facilita a agricultura e a construção. No caso do Nilo, as cheias do rio inundavam as margens e deixavam sedimentos que fertilizavam o solo, permitindo plantar numa região árida — por isso a sociedade egípcia se desenvolveu ali.",
+    "Pode usar o terraceamento, que é a abertura de terraços (degraus) nas encostas da montanha. Ele resolve o problema porque cria faixas planas onde antes só havia inclinação, aumentando a área de cultivo e segurando a terra e a água na encosta."]},
+
+{n:8,t:"Véu de Vapor — a hidrosfera e o ciclo da água",pg:"pp. 204-205 e 208 + aula",
+ html:`
+ <p>A partir daqui o corte muda de assunto: sai o relevo, entra a água. A <b>hidrosfera</b> é composta de <span class="termo">toda a água existente na Terra</span> — distribuída por oceanos, mares, rios, lagos, geleiras e águas subterrâneas, além de estar presente na atmosfera. Cerca de <b>70% da superfície terrestre</b> é coberta por água.</p>
+ <p>Essa água pode ser encontrada na natureza em <b>três estados físicos</b>: sólido, líquido e gasoso. E ela se divide em dois grandes grupos:</p>
+ <ul>
+   <li><b>Águas continentais</b> — as que se encontram nas <b>terras emersas</b> (a terra que está acima do nível do mar): rios, lagos, aquíferos e geleiras. São a água doce, e correspondem a apenas <b>2,8%</b> do total de água do planeta.</li>
+   <li><b>Águas oceânicas</b> — mares e oceanos. Representam a maior parte da água da Terra: <b>97,2%</b>.</li>
+ </ul>
+ <p>Juntas, elas ocupam cerca de três quartos da superfície da Terra. E se olharmos reservatório por reservatório, o desenho fica assim: <b>oceanos 96,5%</b>, <b>geleiras 1,74%</b>, <b>águas subterrâneas 1,7%</b> e <b>lagos e rios apenas 0,013%</b>. A água que usamos para beber vem principalmente dos rios, dos lagos e dos reservatórios subterrâneos — em conjunto, <span class="destaque">menos de 1% de toda a água do mundo</span>.</p>
+ <p>As <b>geleiras</b> merecem destaque: são grandes e espessas massas de gelo formadas em camadas pela compactação da neve. Classificam-se em <b>calotas polares</b>, que cobrem permanentemente as regiões de altas latitudes, e <b>geleiras alpinas</b>, presentes em elevadas altitudes. Cerca de <b>76% da água doce do planeta</b> corresponde às geleiras — por isso a maior parte da nossa água doce não está nos rios, e sim congelada.</p>
+ <p>Agora a pergunta central: a quantidade de água na Terra é <b>sempre a mesma</b> há bilhões de anos. Como? Graças ao <b>ciclo hidrológico</b>, ou ciclo da água: o constante movimento que a água realiza entre as terras emersas, os oceanos e a atmosfera. O que muda não é a quantidade — é o <b>estado físico</b> e a <b>distribuição</b>.</p>
+ <p>O ciclo funciona assim: o calor do Sol provoca a <b>evaporação</b> da água de rios, lagos, oceanos e solos. Os seres vivos, notadamente as plantas, eliminam água para a atmosfera pela <b>transpiração</b>. Lá em cima, o vapor se resfria e se <b>condensa</b>, formando as gotículas das nuvens; conforme as gotas vão se reunindo, a nuvem fica mais densa e ocorre a <b>precipitação</b> — chuva, granizo (pedras de gelo formadas pela queda brusca de temperatura) ou neve. A água que cai pode <b>escoar</b> pela superfície até rios, lagos e oceanos, pode <b>infiltrar</b> no solo e formar reservatórios subterrâneos, ou <b>aflorar</b>, formando as nascentes de córregos e rios. Uma vez de volta à superfície, ela aquece, evapora, condensa e precipita outra vez.</p>
+ <div class="ex"><b>Um bônus do ciclo:</b> ele purifica. Durante a evaporação, os poluentes permanecem nos rios, lagos e oceanos — sobe só a água. E na infiltração, o solo e as rochas funcionam como filtros naturais, retendo impurezas.</div>`,
+ q:["O que é o ciclo hidrológico e por que a quantidade de água do planeta continua sempre a mesma?",
+    "Uma pessoa diz: “não precisa economizar água, o planeta é quase todo feito de água”. Usando os números da distribuição, explique por que essa ideia é enganosa.",
+    "Explique, com suas palavras, o caminho que uma gota faz desde o oceano até ir parar dentro de um reservatório subterrâneo."],
+ a:["É o constante movimento que a água realiza entre as terras emersas, os oceanos e a atmosfera, passando por evaporação, transpiração, condensação, precipitação, escoamento e infiltração. A quantidade continua a mesma porque a água não desaparece: ela apenas muda de estado físico e de lugar.",
+    "Porque a maior parte dessa água é salgada: 97,2% é água oceânica e apenas 2,8% é água doce. Além disso, a maior parte da água doce está congelada nas geleiras, de modo que os rios, lagos e reservatórios subterrâneos que usamos somam menos de 1% de toda a água do planeta.",
+    "O calor do Sol faz a água do oceano evaporar e virar vapor. Na atmosfera o vapor se resfria e se condensa, formando as nuvens. Quando as gotas se juntam e a nuvem fica densa, ocorre a precipitação. Caindo sobre a terra, parte dessa água se infiltra no solo e vai se acumular no subsolo, formando o reservatório subterrâneo."]},
+
+{n:9,t:"Mar Aberto — oceanos e mares",pg:"aula sobre hidrosfera",
+ html:`
+ <p>Se 97,2% da água está nos mares e oceanos, vale saber separar os dois — porque as pessoas usam as palavras como sinônimos, mas a Geografia não.</p>
+ <ul>
+   <li><b>Oceano</b> é uma <span class="termo">grande extensão de água salgada que circunda os continentes</span>. Os oceanos cercam os continentes e todas as massas de terras emersas.</li>
+   <li><b>Mares</b> são <b>menores</b> que os oceanos, apresentam <b>menor profundidade</b> e <b>maior variedade</b> de temperatura, salinidade e transparência das águas. São limitados ou cercados quase que totalmente pelos continentes.</li>
+ </ul>
+ <p>São <b>cinco oceanos</b>: Pacífico, Atlântico, Índico, Glacial Ártico e Glacial Antártico. E por que dividir a água do planeta em cinco pedaços, se ela é toda ligada? A divisão foi feita por causa de <b>particularidades</b> de cada porção: temperatura, insolação, salinidade e movimentos das correntes oceânicas e das marés.</p>
+ <ul>
+   <li><b>Pacífico</b> — localiza-se entre a Ásia, a América e a Oceania. É o <b>mais extenso</b> e o <b>mais profundo</b> dos oceanos.</li>
+   <li><b>Atlântico</b> — banha a América, a Europa e a África. É o <b>segundo maior</b> do mundo.</li>
+   <li><b>Índico</b> — é o <b>terceiro maior</b>. Está localizado entre a Ásia, a África e a Oceania.</li>
+   <li><b>Glacial Ártico</b> — banha a porção norte da Europa, da Ásia e da América. Com as baixas temperaturas da região, formam-se camadas de gelo sobre as águas, o que dificulta ou inviabiliza a navegação durante grande parte do ano.</li>
+   <li><b>Glacial Antártico</b> — é formado pelo <b>encontro das águas</b> dos oceanos Pacífico, Atlântico e Índico. Por estar próximo ao polo Sul, onde as temperaturas são baixas, parte de suas águas permanece congelada durante grande período do ano.</li>
+ </ul>
+ <p>Quanto aos mares, de acordo com a Organização Hidrográfica Internacional existem <b>mais de 100 mares</b> no mundo. Alguns exemplos: mar do Caribe, do Norte, Negro, Cáspio, de Aral, Mediterrâneo, Vermelho, da Arábia, da China e de Bering.</p>
+ <p>E por que a água do mar é salgada? Porque ela contém <b>uma variedade de minerais dissolvidos</b>, sendo o mais abundante o <b>cloreto de sódio</b> — o sal comum. À medida que a água flui dos rios para o oceano, ela carrega consigo minerais dissolvidos e sedimentos, que vão se acumulando ali.</p>
+ <p>Mares e oceanos são importantes muito além dos usos humanos (pesca, transporte, lazer, extração de sal e de outros minerais, produção de energia): eles têm grande importância para a <b>dinâmica ambiental terrestre</b>. As primeiras formas de vida desenvolveram-se nos oceanos há <b>mais de 3,5 bilhões de anos</b>, e hoje eles abrigam uma rica biodiversidade, que vai de minúsculas algas até a baleia-azul, o maior animal do mundo.</p>`,
+ q:["Qual é a diferença entre um mar e um oceano?",
+    "Por que os oceanos foram divididos em cinco, em vez de serem tratados como uma massa de água só? Explique com suas palavras.",
+    "Explique para um colega mais novo por que a água do mar é salgada e a água de um rio não é."],
+ a:["O oceano é uma grande extensão de água salgada que circunda os continentes e cerca todas as terras emersas. O mar é menor, tem menor profundidade e maior variedade de temperatura, salinidade e transparência, e é limitado ou cercado quase que totalmente pelos continentes.",
+    "Porque cada porção tem particularidades próprias: a temperatura, a insolação, a salinidade e os movimentos das correntes oceânicas e das marés são diferentes em cada uma. Essas diferenças justificaram separar a água em cinco oceanos, mesmo estando toda ligada.",
+    "Resposta pessoal. Ex.: os rios vão dissolvendo minerais das rochas e do solo por onde passam e levam tudo isso até o mar. No mar, a água evapora, mas os minerais ficam — e com o tempo eles foram se acumulando. O mais abundante deles é o cloreto de sódio, que é o sal de cozinha. No rio a água está sempre passando e renovando, então o sal não se acumula."]},
+
+{n:10,t:"Leito do Rio — rios e bacias hidrográficas",pg:"p. 210 + aula",
+ html:`
+ <p>Os <b>rios</b> são <span class="termo">cursos regulares de água que desembocam no mar, em um lago ou em outro rio</span>. Eles se formam a partir das precipitações, do afloramento de água subterrânea ou do derretimento de gelo e neve das montanhas.</p>
+ <p>A quantidade de água varia muito de um rio para outro e também ao longo do ano: há uma época em que eles recebem maior quantidade de chuva — o período de <b>cheias</b> — e outra em que recebem menos, a <b>estiagem</b>. Por isso os rios podem ser <b>perenes</b>, que nunca secam, ou <b>intermitentes</b> (também chamados de temporários), que secam no período de estiagem.</p>
+ <p>Todo rio tem um vocabulário próprio, e é aqui que a prova troca as palavras de lugar:</p>
+ <ul>
+   <li><b>Nascente</b> — o ponto onde o rio nasce.</li>
+   <li><b>Afluentes</b> — os rios que deságuam em um rio principal.</li>
+   <li><b>Confluência</b> — o ponto de encontro entre dois rios.</li>
+   <li><b>Foz</b> — onde o rio termina, ou seja, onde ele deságua.</li>
+ </ul>
+ <p>O conjunto do rio principal e de seus afluentes configura a <b>rede hidrográfica</b>. E a área drenada por essa rede é a <b>bacia hidrográfica</b>: uma área constituída por um rio principal e seus afluentes, as formas de relevo, a vegetação, as rochas e os solos, além dos diferentes tipos de ocupação humana. As bacias são delimitadas por regiões de altitude mais elevada, chamadas <b>divisores de águas</b>.</p>
+ <p>Repare que o relevo e a água estão diretamente ligados — e é por isso que este kit estuda os dois juntos:</p>
+ <ul>
+   <li>Onde o relevo é <b>mais acidentado</b>, com maiores declives e morros, os rios tendem a apresentar <b>cachoeiras</b> e a ter um curso de água mais <b>veloz</b>. São os chamados <b>rios de planalto</b>, que têm grande potencial para a geração de <b>energia hidrelétrica</b>.</li>
+   <li>Onde o relevo é <b>mais plano</b>, as águas correm em <b>menor velocidade</b> e podem apresentar <b>meandros</b> (caminhos sinuosos, cheios de curvas). São os <b>rios de planície</b>, favoráveis ao <b>transporte</b>.</li>
+ </ul>
+ <p>A vegetação também desempenha papel importante. A vegetação ribeirinha, chamada de <b>mata ciliar</b>, é imprescindível para a preservação dos recursos hídricos e ainda auxilia na infiltração das águas.</p>
+ <div class="ex"><b>A bacia aqui do lado:</b> a <b>bacia hidrográfica do rio Tubarão</b> nasce na encosta da serra Geral, no município de Lauro Müller, mais precisamente na serra do Rio do Rastro. Seus limites englobam <b>18 municípios</b>, entre eles Lauro Müller, Orleans, Braço do Norte, Grão-Pará, Armazém, Gravatal, Capivari de Baixo, Tubarão, Jaguaruna e Sangão.</div>
+ <p>No Brasil há inúmeras bacias hidrográficas. Quatro se destacam:</p>
+ <ul>
+   <li><b>Bacia do Prata</b> — formada pelas sub-bacias dos rios <b>Paraná, Paraguai e Uruguai</b>, que deságuam em território argentino e uruguaio, no rio da Prata. Tem grande concentração populacional e industrial. A hidrelétrica de <b>Itaipu Binacional</b>, a maior do país, está no rio Paraná.</li>
+   <li><b>Bacia do Tocantins</b> — o rio principal é o <b>Tocantins</b> e o <b>Araguaia</b> é seu maior e mais importante afluente. Tem longos trechos navegáveis, usados para transportar soja. Nela fica a usina de <b>Tucuruí</b>, a segunda maior do Brasil.</li>
+   <li><b>Bacia do Amazonas</b> — o rio principal nasce na cordilheira dos Andes, no Peru, e recebe vários nomes (Ucaiali, Marañón, Solimões) antes de ser chamado <b>Amazonas</b>, a partir do encontro com o rio Negro, perto de Manaus. É a <b>maior bacia hidrográfica do mundo</b>, cobrindo cerca de <b>45%</b> do território brasileiro, e concentra <b>81%</b> da disponibilidade de águas superficiais do país.</li>
+   <li><b>Bacia do São Francisco</b> — o rio São Francisco, o “Velho Chico”, nasce no sul de Minas Gerais, na <b>serra da Canastra</b>, e atravessa todo o Sertão nordestino (BA, PE, SE e AL). Muitos de seus afluentes são <b>rios temporários</b>.</li>
+ </ul>`,
+ q:["O que é uma bacia hidrográfica?",
+    "Compare dois rios: o primeiro desce uma serra cheio de cachoeiras e corredeiras; o segundo corre devagar, fazendo curvas, numa área plana. Qual serve melhor para gerar energia e qual serve melhor para transporte? Justifique.",
+    "Explique, com suas palavras, a diferença entre nascente, confluência e foz. Use o rio Tubarão ou outro rio que você conheça como exemplo."],
+ a:["É a área constituída por um rio principal e seus afluentes, incluindo as formas de relevo, a vegetação, as rochas, os solos e os tipos de ocupação humana daquela área. Ela é delimitada pelas regiões de altitude mais elevada, chamadas divisores de águas.",
+    "O primeiro serve melhor para gerar energia: é um rio de planalto, e o relevo acidentado dá quedas d'água e correnteza forte, que é o que faz girar as turbinas. O segundo serve melhor para transporte: é um rio de planície, onde a água corre devagar e forma meandros, o que facilita a navegação.",
+    "A nascente é o ponto onde o rio começa — no caso do rio Tubarão, na encosta da serra Geral, em Lauro Müller. A confluência é o ponto onde dois rios se encontram. A foz é onde o rio termina e despeja suas águas, no mar, num lago ou em outro rio."]},
+
+{n:11,t:"Zona de Infiltração — escoamento superficial",pg:"p. 206",
+ html:`
+ <p>Estamos logo abaixo da superfície. Quando a chuva cai, a água tem dois caminhos possíveis: <b>infiltrar</b> no solo ou <b>escoar</b> por cima dele. O <b>escoamento superficial</b> é esse segundo caminho — a água correndo pela superfície até chegar aos rios, lagos e oceanos.</p>
+ <p>De que depende essa disputa entre infiltrar e escoar? De três coisas naturais: o <b>tipo de solo</b>, a <b>vegetação</b> e as <b>características do relevo</b>. Mas tem uma quarta, e é a que está na mão das pessoas: o <b>uso que se faz do solo</b>.</p>
+ <p>A regra geral é simples: <span class="destaque">em solos compactados, a infiltração é menor e, portanto, o escoamento superficial é maior</span>. Em áreas rurais com vegetação, ao contrário, a infiltração de água até o lençol freático é maior, porque a vegetação contribui para a <b>porosidade do solo</b> — as raízes abrem caminhos por onde a água desce.</p>
+ <p><b>O problema no campo.</b> A <b>compactação do solo</b> pode ser causada por máquinas agrícolas pesadas, como os tratores, ou pelo <b>pisoteio de gado</b>. O solo compactado é como um chão socado: os espaços entre as partículas fecham. Isso prejudica a infiltração e aumenta o escoamento superficial, <b>agravando a erosão do solo</b> e provocando danos às terras agricultáveis.</p>
+ <p><b>O problema na cidade.</b> Nas áreas urbanas, a <b>impermeabilização do solo</b> pela pavimentação de ruas, com camadas de asfalto, e pelas construções de concreto dificulta a infiltração da água. As consequências vêm em dupla: há <b>diminuição no abastecimento dos reservatórios subterrâneos</b> (menos água descendo) e <b>aumento no escoamento superficial</b> (mais água correndo por cima). Com isso, a água escoa com grande velocidade e em grande quantidade pela superfície, onde vai se acumulando — o que pode levar à ocorrência de <b>alagamentos</b>.</p>
+ <p>O que dá para fazer? Algumas cidades adotam o sistema de <b>galerias pluviais</b>, que são dutos subterrâneos utilizados para escoar a água da chuva captada por aberturas na superfície. E o uso de novas tecnologias, como o <b>asfalto permeável</b>, também ajuda: esse tipo de asfalto apresenta maior porosidade, o que permite maior infiltração e drenagem da água, reduzindo o escoamento superficial e evitando seu acúmulo.</p>`,
+ q:["O que é escoamento superficial e de quais fatores ele depende?",
+    "Um bairro asfaltou todas as ruas e agora alaga toda vez que chove forte. Explique o que aconteceu e proponha uma das soluções que você estudou.",
+    "Um pecuarista colocou muito gado num pasto pequeno. Meses depois, percebeu que a chuva começou a levar a terra embora. Explique o que o pisoteio fez com aquele solo."],
+ a:["É a água que corre pela superfície do terreno, em vez de infiltrar no solo, até chegar aos rios, lagos e oceanos. Depende do tipo de solo, da vegetação, das características do relevo e também do uso que as pessoas fazem do solo.",
+    "O asfalto impermeabilizou o solo: a água da chuva não consegue mais infiltrar, então quase tudo vira escoamento superficial. Ela corre rápido e em grande quantidade, se acumula nas partes baixas e provoca o alagamento. Uma solução é o asfalto permeável, que tem mais porosidade e deixa a água infiltrar e drenar; outra é instalar galerias pluviais para escoar a água da chuva por dutos subterrâneos.",
+    "O pisoteio constante do gado compactou o solo, fechando os espaços porosos entre as partículas. Com o solo compactado, a água da chuva não infiltra e escorre por cima, aumentando o escoamento superficial. Essa água correndo arrasta a camada de terra, o que agrava a erosão do solo."]},
+
+{n:12,t:"Zona Saturada — águas subterrâneas, aquíferos e usos da água",pg:"pp. 209 e 225-228 + aula",
+ html:`
+ <p>Chegamos ao fundo do corte. As <b>águas subterrâneas</b> são <span class="termo">reservatórios de água doce que se encontram no subsolo</span>. Elas se formam quando a água da chuva se infiltra — o que depende da <b>permeabilidade das rochas</b> existentes no local. E são muito importantes para o ciclo hidrológico, pois <b>afloram</b> em determinados pontos do solo, formando as <b>nascentes de rios</b>.</p>
+ <p>O subsolo se organiza em duas zonas. A <b>zona não saturada</b> é aquela em que os espaços porosos são ocupados por água <b>e ar</b>. A <b>zona saturada</b> é aquela em que a água preenche <b>todos</b> os espaços porosos e fraturas das rochas. E o <b>lençol freático</b> é o nome que se dá ao <b>limite entre as duas</b>. O nível dele sobe ou desce conforme o volume de água que se infiltra quando ocorrem as chuvas.</p>
+ <p>Os reservatórios subterrâneos são de dois tipos, e a diferença está na profundidade:</p>
+ <ul>
+   <li><b>Lençóis freáticos</b> — encontram-se em <b>pequena profundidade</b> e fornecem água principalmente para <b>poços caseiros</b>. Como estão mais próximos da superfície, estão <b>mais sujeitos à contaminação</b>.</li>
+   <li><b>Aquíferos</b> — estão em <b>profundidades maiores</b>, sendo necessário o uso de equipamentos para a extração das águas, por meio de <b>poços artesianos</b>. São utilizados pelas indústrias ou para o abastecimento das cidades. São unidades rochosas porosas e permeáveis nas quais a água se acumula.</li>
+ </ul>
+ <p>Em geral essas águas são potáveis, pois o solo e as rochas podem <b>filtrar suas impurezas</b>. Contudo, estão sujeitas à contaminação por poluição, especialmente com o despejo de resíduos agrícolas e industriais nos rios e no solo exposto.</p>
+ <p>No mundo existem <b>oito grandes aquíferos</b>, e <b>dois deles estão no território brasileiro</b>: o <b>Sistema Aquífero Guarani</b> e o <b>Sistema Aquífero Grande Amazônia (SAGA)</b>. O Guarani é um dos maiores do mundo: ocupa cerca de <b>1,2 milhão de km²</b>, estendendo-se por Brasil, Argentina, Paraguai e Uruguai, com <b>66% de sua área</b> em território brasileiro. Como os aquíferos ultrapassam os limites dos territórios dos países, são necessários <b>acordos internacionais</b> para a exploração deles.</p>
+ <p><b>E para que usamos toda essa água?</b> As atividades econômicas que mais consomem água, no Brasil e no mundo, são a <b>agropecuária</b> e a <b>indústria</b>. A <b>irrigação</b> de áreas agrícolas é a atividade humana que mais consome água — cerca de <b>70% da água doce</b> do mundo. Até o século XIX o consumo mundial aumentou lentamente; a partir da década de <b>1950</b> ele teve crescimento acelerado, por causa do aumento da população mundial, do crescimento das cidades e da produção industrial e agropecuária. Segundo a projeção da ONU, a demanda mundial por água potável vai crescer <b>55% até 2050</b>.</p>
+ <p>Nas áreas de relevo íngreme, as <b>quedas d'água</b> são aproveitadas para gerar <b>energia hidrelétrica</b>: a água é represada e a queda faz girar as turbinas. Mas a construção dessas usinas provoca impactos sociais e ambientais, como o <b>deslocamento forçado de populações ribeirinhas</b> e o <b>desmatamento</b> — impactos ainda mais graves quando a usina é instalada em área de <b>planície</b>, pois a inundação do represamento alcança grande extensão.</p>
+ <p>Para chegar à torneira, a água precisa de cuidado. Perto das grandes cidades existem <b>áreas de proteção aos mananciais</b>, destinadas ao abastecimento urbano. E toda água captada precisa passar por <b>estações de tratamento</b>, onde se verifica a qualidade, retiram-se partículas impróprias para o consumo e adiciona-se <b>flúor</b>, para prevenir cáries.</p>
+ <p><b>Quando dá errado — e quando dá para consertar.</b> O crescimento acelerado das cidades e a falta de infraestrutura de saneamento levaram à poluição de muitos rios. Mas há casos de recuperação: o <b>rio Tâmisa</b>, em Londres, ficou <b>biologicamente morto</b> entre as décadas de 1930 e 1950, sem gás oxigênio e sem peixes; a partir do fim dos anos 1950 foram construídas estações de esgoto e, já na década de 1970, os peixes voltaram a habitá-lo.</p>
+ <p>Nas cidades, os rios costumam sofrer duas intervenções que a prova cobra: a <b>canalização</b>, feita para possibilitar a expansão urbana, mas questionada porque causa impactos ambientais e <b>não resolve a questão das cheias</b>; e a <b>retificação</b>, que é deixar o trajeto do rio mais reto e sem meandros para facilitar a ocupação das margens, o que <b>altera drasticamente a dinâmica das águas</b>. Some a isso o <b>desmatamento da mata ciliar</b>, que acelera os processos erosivos das margens e causa <b>assoreamento</b>, prejudicando o escoamento das águas fluviais.</p>`,
+ q:["Qual é a diferença entre lençol freático e aquífero?",
+    "Uma cidade retificou o rio que corta o centro, tirou os meandros e desmatou as margens. Explique dois problemas que essas decisões podem causar.",
+    "Explique por que a água de um poço caseiro raso tem mais chance de estar contaminada do que a de um poço artesiano profundo."],
+ a:["Os lençóis freáticos estão em pequena profundidade, abastecem principalmente poços caseiros e, por estarem perto da superfície, ficam mais sujeitos à contaminação. Os aquíferos estão em profundidades maiores, exigem equipamentos e poços artesianos para a extração e são usados pelas indústrias e para o abastecimento das cidades.",
+    "Resposta pessoal, com dois destes: a retificação altera drasticamente a dinâmica das águas, porque o rio passa a correr mais reto e mais rápido; o desmatamento da mata ciliar acelera os processos erosivos das margens e causa assoreamento, que prejudica o escoamento das águas; e essas obras não resolvem a questão das cheias e enchentes, podendo até agravá-las.",
+    "Porque o poço caseiro capta a água do lençol freático, que está em pequena profundidade, ou seja, muito perto da superfície — então a água teve pouco solo e pouca rocha para atravessar e filtrar as impurezas, e fica exposta aos resíduos agrícolas e industriais despejados no solo. O poço artesiano capta de um aquífero profundo, onde a água passou por muito mais camadas filtrantes."]}
+];
+
+/* ===== ANTICÓPIA + CHECKLIST ===== */
+var PONTOS=[
+[["internos vêm do interior da Terra / placas tectônicas e CONSTROEM, levantam","externos agem por fora (chuva, rio, vento, geleira, mar) e DESGASTAM, esculpem","que as ações humanas entram nos agentes externos"],
+ ["dei um exemplo MEU de decisão que depende do relevo (túnel, contorno, corte)","liguei o relevo a um problema real da obra (custo, risco, escoamento da água)"],
+ ["que a formação do relevo é dinâmica e contínua","que internos e externos continuam agindo, só que muito devagar"]],
+[["decomposição e desagregação das rochas e de seus minerais","causado por umidade, ventos, temperatura e seres vivos","que a rocha é estragada no próprio lugar"],
+ ["a raiz rachando = intemperismo biológico","o cimento virando pó = intemperismo químico","que os tipos podem acontecer ao mesmo tempo"],
+ ["físico = quebra/fragmenta, o material continua o mesmo","químico = decompõe, o material muda de composição","dei um exemplo MEU"]],
+[["intemperismo quebra/decompõe a rocha no lugar","erosão remove e transporta os fragmentos"],
+ ["no deserto falta água e vegetação, então sobra o vento","no tropical a água é abundante e a erosão pelos rios é intensa","que a intensidade depende do clima"],
+ ["erosão: a chuva removeu o material do morro sem vegetação","transporte: a água levou o material encosta abaixo","sedimentação: a água perdeu força e depositou a terra no quintal"]],
+[["que se originam do encontro de placas tectônicas","que são as maiores elevações da superfície / obra dos agentes internos"],
+ ["que a primeira (pontuda e íngreme) é a mais jovem","porque sofreu pouco desgaste erosivo ainda","que o topo arredondado indica muito tempo de erosão"],
+ ["a oceânica é mais densa e mergulha (subducção)","a continental sofre soerguimento e dobramento"]],
+[["planalto = terreno extenso, pouco acidentado, mais elevado que as áreas ao redor","no planalto PREDOMINA a erosão; na planície predomina a sedimentação"],
+ ["que é uma CHAPADA","porque tem topo plano e queda acentuada, que lembra um degrau","que ela é uma forma que aparece dentro do planalto"],
+ ["que são desgastados do planalto pelo vento e pelas águas","que a erosão os transporta","que se depositam nas áreas próximas mais baixas"]],
+[["absoluta = abaixo do nível do mar","relativa = mais baixa que as regiões próximas, mas acima do nível do mar","citei a faixa de 100 a 500 m OU o exemplo do mar Morto"],
+ ["que é uma depressão RELATIVA","porque está acima do nível do mar, mas mais baixa que o entorno"],
+ ["que só a absoluta fica abaixo do nível do mar","que a relativa compara com as regiões vizinhas, não com o mar"]],
+[["o planalto é mais alto e perde material (erosão supera acúmulo)","a planície é baixa e recebe o material vindo das áreas altas"],
+ ["que as planícies são planas e de solo fértil","que isso facilitou a agricultura e a ocupação","dei o exemplo do Nilo (cheias fertilizando o solo) ou um exemplo meu"],
+ ["que a técnica é o TERRACEAMENTO","que consiste em abrir terraços (degraus) nas encostas","que isso cria área plana para cultivo onde só havia inclinação"]],
+[["que é o movimento constante da água entre terras emersas, oceanos e atmosfera","citei etapas (evaporação, condensação, precipitação, infiltração…)","que a quantidade não muda: muda o estado físico e a distribuição"],
+ ["que 97,2% é água salgada (oceânica) e só 2,8% é doce","que a maior parte da água doce está congelada nas geleiras","que menos de 1% está disponível para consumo"],
+ ["o Sol faz a água evaporar","o vapor se condensa e forma nuvens, e ocorre a precipitação","a água se infiltra no solo e se acumula no subsolo"]],
+[["oceano = grande extensão de água salgada que circunda os continentes","mar = menor, menos profundo, cercado quase todo pelos continentes","citei a maior variedade de temperatura/salinidade/transparência do mar"],
+ ["por causa de particularidades de temperatura e insolação","por causa da salinidade e dos movimentos das correntes e das marés"],
+ ["que a água do mar tem minerais dissolvidos, principalmente o cloreto de sódio","que os rios carregam esses minerais até o mar","expliquei com as MINHAS palavras / um exemplo meu"]],
+[["que é a área formada por um rio principal e seus afluentes","que inclui relevo, vegetação, rochas, solos e ocupação humana","citei os divisores de águas"],
+ ["o primeiro (cachoeiras) = rio de planalto → energia hidrelétrica","o segundo (curvas, devagar) = rio de planície → transporte","justifiquei pelo relevo e pela velocidade da água"],
+ ["nascente = onde o rio começa","confluência = ponto de encontro entre dois rios","foz = onde o rio termina e deságua"]],
+[["que é a água que corre pela superfície em vez de infiltrar","que depende do tipo de solo, da vegetação e do relevo","que depende também do uso que se faz do solo"],
+ ["que o asfalto impermeabilizou o solo e impediu a infiltração","que o escoamento aumentou, a água se acumulou e alagou","propus asfalto permeável OU galerias pluviais"],
+ ["que o pisoteio compactou o solo","que o solo compactado infiltra menos e escoa mais","que isso agrava a erosão do solo"]],
+[["lençol freático = pequena profundidade, poços caseiros, mais sujeito à contaminação","aquífero = maior profundidade, poço artesiano, abastece indústrias e cidades"],
+ ["citei um problema (retificação altera a dinâmica das águas OU não resolve as cheias)","citei um segundo problema (desmatamento da mata ciliar → erosão das margens e assoreamento)"],
+ ["que o poço raso capta do lençol freático, perto da superfície","que a água atravessou pouco solo e rocha, então foi menos filtrada","que fica exposta a resíduos despejados no solo"]]
+];
+
+function normTxt(s){s=(s||'').toLowerCase();try{s=s.normalize('NFD').replace(/[̀-ͯ]/g,'')}catch(e){}return s.replace(/[^a-z0-9\s]+/g,' ').replace(/\s+/g,' ').trim();}
+var TXTN=BLOCOS.map(function(b){var d=document.createElement('div');d.innerHTML=b.html;return normTxt(d.textContent||d.innerText||'').split(' ');});
+function analisaRuns(rw,bw){
+  var pos={},i2;for(i2=0;i2<bw.length;i2++){(pos[bw[i2]]=pos[bw[i2]]||[]).push(i2);}
+  var i=0,maxRun=0,cob=0,n=rw.length;
+  while(i<n){
+    var best=0,ps=pos[rw[i]]||[];
+    for(var a=0;a<ps.length;a++){var k=0;while(i+k<n&&bw[ps[a]+k]===rw[i+k])k++;if(k>best)best=k;}
+    if(best>maxRun)maxRun=best;
+    if(best>=5){cob+=best;i+=best;}else i++;
+  }
+  return {maxRun:maxRun,cob:cob,n:n};
+}
+var QTXT=BLOCOS.map(function(b){return b.q.map(function(q){return normTxt(q).split(' ');});});
+function tiraCitacao(rw,qw){
+  var pos={},i2;for(i2=0;i2<qw.length;i2++){(pos[qw[i2]]=pos[qw[i2]]||[]).push(i2);}
+  var out=[],i=0;
+  while(i<rw.length){
+    var best=0,ps=pos[rw[i]]||[];
+    for(var a=0;a<ps.length;a++){var k=0;while(i+k<rw.length&&qw[ps[a]+k]===rw[i+k])k++;if(k>best)best=k;}
+    if(best>=4){i+=best;}else{out.push(rw[i]);i++;}
+  }
+  return out;
+}
+function ehTranscrita(txt,n,j){
+  var w=normTxt(txt).split(' ').filter(function(x){return x;});
+  if(w.length<5)return false;
+  if(j)w=tiraCitacao(w,QTXT[n-1][j-1]);
+  if(w.length<5)return false;
+  var r=analisaRuns(w,TXTN[n-1]);
+  return r.maxRun>=8||(w.length>=8&&r.cob/r.n>0.6);
+}
+
+/* ================= ESTADO ================= */
+var KEY='geo6_relevo_hidrosfera_leituraguiada_v1';
+var mem={};
+function ler(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return mem}}
+function gravar(s){try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){mem=s}carimbo();}
+var S=ler(); if(!S.resp)S.resp={}; if(!S.feito)S.feito={}; if(!S.auto)S.auto={}; if(!S.chk)S.chk={}; if(!S.tentou)S.tentou={}; if(!S.transcrita)S.transcrita={};
+
+function carimbo(){
+  var d=new Date();
+  var f=d.toLocaleDateString('pt-BR')+' às '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+  S.quando=f;
+  try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){mem=S}
+  document.getElementById('status').textContent='💾 Salvo automaticamente — última vez: '+f;
+}
+
+/* ================= MODAL ================= */
+function aviso(t,msg,onSim,comCancelar){
+  document.getElementById('mTit').textContent=t;
+  document.getElementById('mTxt').textContent=msg;
+  document.getElementById('mNao').style.display=comCancelar?'inline-block':'none';
+  var ov=document.getElementById('overlay'); ov.classList.add('on');
+  document.getElementById('mSim').onclick=function(){ov.classList.remove('on'); if(onSim)onSim();};
+  document.getElementById('mNao').onclick=function(){ov.classList.remove('on');};
+}
+
+/* ================= RENDER ================= */
+function escapa(s){return (s||'').replace(/</g,'&lt;');}
+function statusBloco(n){
+  var rev=false,total=0,sim=0;
+  for(var j=1;j<=3;j++){
+    var k=n+'-'+j;
+    if(S.transcrita[k])rev=true;
+    var pts=PONTOS[n-1][j-1],c=S.chk[k]||[];
+    for(var p=0;p<pts.length;p++){total++;if(c[p]===0)rev=true;if(c[p]===1)sim++;}
+  }
+  if(rev)return 'rev';
+  if(sim===total)return 'ok';
+  return '';
+}
+function render(){
+  var alvo=document.getElementById('blocos'); alvo.innerHTML='';
+  BLOCOS.forEach(function(b,i){
+    var liberado=(i===0)||S.feito[b.n-1];
+    var feito=!!S.feito[b.n];
+    var sec=document.createElement('section');
+    sec.className='bloco'+(liberado?'':' trancado');
+    var perg='';
+    b.q.forEach(function(qt,j){
+      var k=b.n+'-'+(j+1);
+      var v=escapa(S.resp[k]);
+      var verm=!!S.transcrita[k];
+      var ro=(feito&&!verm)?'readonly':'';
+      perg+='<div class="pergunta"><label for="t'+k+'">'+(j+1)+'. '+qt+'</label>'+
+            '<textarea id="t'+k+'" data-b="'+b.n+'" data-q="'+(j+1)+'" class="'+(verm?'verm':'')+'" '+ro+'>'+v+'</textarea>'+
+            (verm?'<p class="avVerm">🔴 Esta resposta ainda está igual ao texto da camada — reescreva com as SUAS palavras.</p>':'')+
+            '</div>';
+    });
+    var mod='';
+    b.a.forEach(function(at,j){
+      var k=b.n+'-'+(j+1);
+      var pts=PONTOS[b.n-1][j],chk=S.chk[k]||[];
+      var linhas='';
+      pts.forEach(function(pt,pi){
+        var vv=chk[pi];
+        linhas+='<div class="ponto"><span>'+pt+'</span>'+
+          '<span class="pbts"><button class="btChk '+(vv===1?'on':'')+'" data-k="'+k+'" data-p="'+pi+'" data-v="1">Sim</button>'+
+          '<button class="btChk nao '+(vv===0?'on':'')+'" data-k="'+k+'" data-p="'+pi+'" data-v="0">Não</button></span></div>';
+      });
+      mod+='<div class="mQ"><p class="mResp"><b>'+(j+1)+'.</b> '+at+'</p>'+
+           '<div class="chkbox"><p class="chkTit">✅ Minha resposta disse que…</p>'+linhas+'</div></div>';
+    });
+    var st=feito?statusBloco(b.n):'';
+    var selo=st==='ok'?'<span class="selo-ok">✅ Camada ok</span>':st==='rev'?'<span class="selo-rev">🔁 Para revisar</span>':'';
+    sec.innerHTML=
+      '<div class="cab"><span class="num">Camada '+b.n+'</span><h2>'+b.t+'</h2><span class="pag">'+b.pg+'</span></div>'+
+      (liberado?
+        '<div class="corpo">'+b.html+'</div>'+
+        '<div class="perguntas"><h3>✍️ Escreva com suas palavras — 3 perguntas</h3>'+perg+
+        '<p class="aviso" id="av'+b.n+'"></p>'+
+        '<button class="principal btConferir" data-b="'+b.n+'" '+(feito?'disabled':'')+'>✔️ Conferir</button></div>'+
+        '<div class="modelo" style="display:'+(feito?'block':'none')+'" id="mod'+b.n+'">'+
+          '<h4>Resposta modelo — compare ponto a ponto</h4>'+mod+
+          '<div class="auto">'+selo+'</div>'+
+        '</div>'
+      : '<div class="cadeado">🔒 Esta camada abre depois que você conferir a Camada '+(b.n-1)+'.</div>');
+    alvo.appendChild(sec);
+  });
+  ligar(); progresso(); renderRevisar();
+}
+function renderRevisar(){
+  var box=document.getElementById('revisarBox');
+  if(!box){box=document.createElement('section');box.id='revisarBox';box.className='revisar';
+    var bl=document.getElementById('blocos');bl.parentNode.insertBefore(box,bl.nextSibling);}
+  var itens=[];
+  BLOCOS.forEach(function(b){
+    if(!S.feito[b.n])return;
+    for(var j=1;j<=3;j++){
+      var k=b.n+'-'+j;
+      if(S.transcrita[k])itens.push('Camada '+b.n+', pergunta '+j+': resposta igual ao texto — reescrever com as próprias palavras.');
+      var pts=PONTOS[b.n-1][j-1],c=S.chk[k]||[];
+      for(var p=0;p<pts.length;p++){if(c[p]===0)itens.push('Camada '+b.n+', pergunta '+j+': faltou dizer — “'+pts[p]+'”.');}
+    }
+  });
+  if(!itens.length){box.style.display='none';return;}
+  box.style.display='block';
+  var h='<h2>🔁 Para revisar antes da prova</h2><ul>';
+  itens.forEach(function(t){h+='<li>'+t+'</li>';});
+  box.innerHTML=h+'</ul>';
+}
+function ligar(){
+  document.querySelectorAll('textarea').forEach(function(t){
+    t.addEventListener('input',function(){
+      var k=t.dataset.b+'-'+t.dataset.q;
+      S.resp[k]=t.value;
+      if(S.transcrita[k]&&!ehTranscrita(t.value,parseInt(t.dataset.b,10),parseInt(t.dataset.q,10))){
+        delete S.transcrita[k]; gravar(S); render();
+        var nt=document.getElementById('t'+k);
+        if(nt){nt.focus();try{nt.selectionStart=nt.selectionEnd=nt.value.length;}catch(e){}}
+        return;
+      }
+      gravar(S);
+    });
+  });
+  document.querySelectorAll('.btConferir').forEach(function(bt){
+    bt.addEventListener('click',function(){
+      var n=parseInt(bt.dataset.b,10),vazio=false;
+      for(var j=1;j<=3;j++){var v=(S.resp[n+'-'+j]||'').trim();if(v.length<3)vazio=true;}
+      var av=document.getElementById('av'+n);
+      if(vazio){av.textContent='⚠️ Responda as 3 perguntas (pelo menos 3 letras em cada) antes de conferir.';return;}
+      var primeira=[],naoMudou=[];
+      for(var j2=1;j2<=3;j2++){
+        var k=n+'-'+j2,v2=S.resp[k]||'';
+        if(ehTranscrita(v2,n,j2)){
+          if(S.tentou[k]===undefined){S.tentou[k]=v2;primeira.push(j2);}
+          else if(v2===S.tentou[k]){naoMudou.push(j2);}
+          else{S.transcrita[k]=true;}
+        }else if(S.transcrita[k]){delete S.transcrita[k];}
+      }
+      if(primeira.length||naoMudou.length){
+        gravar(S);
+        var m='🟡 ';
+        if(primeira.length)m+='Pergunta'+(primeira.length>1?'s':'')+' '+primeira.join(', ')+': boa parte da resposta está igual ao texto da camada. Tente explicar como se fosse para um amigo, sem olhar o texto — pode ficar mais curto e simples, o que vale é ser SEU. Depois clique em Conferir de novo. ';
+        if(naoMudou.length)m+='Pergunta'+(naoMudou.length>1?'s':'')+' '+naoMudou.join(', ')+': você ainda não mudou a resposta — altere e clique em Conferir de novo.';
+        av.textContent=m;
+        return;
+      }
+      av.textContent='';
+      S.feito[n]=true; gravar(S); render();
+      var el2=document.getElementById('mod'+n); if(el2)el2.scrollIntoView({behavior:'smooth',block:'center'});
+    });
+  });
+  document.querySelectorAll('.btChk').forEach(function(bt){
+    bt.addEventListener('click',function(){
+      var k=bt.dataset.k;
+      if(!S.chk[k])S.chk[k]=[];
+      S.chk[k][parseInt(bt.dataset.p,10)]=parseInt(bt.dataset.v,10);
+      var n=parseInt(k.split('-')[0],10);
+      var st=statusBloco(n); if(st)S.auto[n]=st;
+      gravar(S); render();
+    });
+  });
+}
+
+function progresso(){
+  var c=0; BLOCOS.forEach(function(b){if(S.feito[b.n])c++;});
+  document.getElementById('barra').style.width=(c/BLOCOS.length*100)+'%';
+  document.getElementById('txtProg').textContent='Camada '+c+' de '+BLOCOS.length+' concluída'+(c===BLOCOS.length?' — corte completo! 🎉':'.');
+}
+
+/* ================= BOTÕES DO PAINEL ================= */
+document.getElementById('btExportar').onclick=function(){
+  var blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
+  var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='leitura-guiada-geografia6-relevo-hidrosfera.json'; a.click();
+};
+document.getElementById('btImportar').onclick=function(){document.getElementById('arquivo').click();};
+document.getElementById('arquivo').onchange=function(e){
+  var f=e.target.files[0]; if(!f)return;
+  var r=new FileReader();
+  r.onload=function(){
+    try{ var d=JSON.parse(r.result); S=d; if(!S.resp)S.resp={}; if(!S.feito)S.feito={}; if(!S.auto)S.auto={}; if(!S.chk)S.chk={}; if(!S.tentou)S.tentou={}; if(!S.transcrita)S.transcrita={};
+      gravar(S); render(); aviso('Pronto','Seu progresso foi importado com sucesso.');
+    }catch(err){ aviso('Ops','Não consegui ler esse arquivo. Ele precisa ser o .json exportado por este material.'); }
+  };
+  r.readAsText(f);
+};
+document.getElementById('btZerar').onclick=function(){
+  aviso('Zerar tudo?','Isso apaga todas as respostas escritas nesta Leitura Guiada. Não dá para desfazer.',function(){
+    S={resp:{},feito:{},auto:{},chk:{},tentou:{},transcrita:{}}; gravar(S); render();
+  },true);
+};
+
+render(); carimbo();
+</script>
+</body>
+</html>

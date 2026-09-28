@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quiz — Geografia 6º ano | Corte do Terreno</title>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="wrap">
+
+<header class="topo">
+  <h1 class="titulo"><span class="sub">Corte do Terreno</span>Quiz — 15 sondagens</h1>
+  <div class="faixa">
+    <span>6º ano · Geografia</span>
+    <span>Relevo e Hidrosfera</span>
+    <span>15 questões objetivas</span>
+    <span>Avaliação: 29/09</span>
+  </div>
+  <p style="margin:0"><span class="selo ocre">Camada 2 de 5 — testando o que ficou</span></p>
+</header>
+
+<nav class="abas">
+  <a href="leitura-guiada.html">📖 1. Leitura Guiada</a>
+  <a href="quiz.html" class="atual">🎯 2. Quiz</a>
+  <a href="resumo.html">🗺️ 3. Resumo</a>
+  <a href="simulado.html">📝 4. Simulado</a>
+  <a href="index.html">🏠 Início</a>
+</nav>
+
+<div class="painel">
+  <div class="status" id="status">Carregando seu progresso…</div>
+  <div class="btns">
+    <button id="btExportar">📥 Exportar</button>
+    <button id="btImportar">📤 Importar</button>
+    <button id="btZerar">🗑️ Zerar tudo</button>
+  </div>
+</div>
+<input type="file" id="arquivo" accept="application/json" style="display:none">
+
+<div class="progresso">
+  <div class="barra"><i id="barra"></i></div>
+  <p id="txtProg">0 de 15 respondidas.</p>
+</div>
+
+<p class="aviso-caixa">
+<b>Como funciona:</b> são 15 sondagens pelas camadas do terreno. Marque uma alternativa em cada uma
+e clique em <b>Corrigir tudo</b> no fim. Você vai receber uma nota e um <b>código de liberação</b> —
+é com ele que o gabarito comentado abre. Enquanto não corrigir, dá para trocar de resposta à vontade.
+</p>
+
+<div id="questoes"></div>
+
+<div style="margin:24px 0">
+  <button class="principal" id="btCorrigir" style="font-size:17px;padding:14px 26px">✔️ Corrigir tudo</button>
+</div>
+
+<div id="resultado"></div>
+
+<div class="rodape">
+  <span>Próximo material da sequência →</span>
+  <a href="resumo.html">🗺️ Ir para o Resumo</a>
+</div>
+
+</div>
+
+<script src="motor.js"></script>
+<script>
+/* ===== 15 QUESTÕES — alts[0] é SEMPRE a correta (o embaralhamento cuida do resto) ===== */
+var QUESTOES=[
+{n:1,en:"O conjunto de formas que compõem a superfície terrestre — montanhas, morros, serras, planícies e vales — recebe o nome de:",
+ alts:[
+ {t:"relevo.",c:"Correta. Relevo é justamente o conjunto de formas que compõem a superfície terrestre, e sua formação é dinâmica e contínua."},
+ {t:"hidrosfera.",c:"A hidrosfera é toda a água existente na Terra — oceanos, rios, geleiras, águas subterrâneas e a água da atmosfera. Não são as formas da superfície."},
+ {t:"intemperismo.",c:"Intemperismo é um processo, não um conjunto de formas: é a decomposição e desagregação das rochas e de seus minerais."},
+ {t:"sedimentação.",c:"Sedimentação também é um processo: a deposição dos sedimentos transportados pela erosão."}]},
+
+{n:2,en:"Sobre os agentes que atuam na formação do relevo, é correto afirmar que os agentes externos são:",
+ alts:[
+ {t:"fenômenos naturais, como chuvas, rios e ventos, e também as ações humanas, que desgastam e modelam as formas da superfície.",c:"Correta. Os agentes externos atuam no desgaste e na modelagem do relevo, e as ações humanas fazem parte desse grupo."},
+ {t:"apenas os movimentos das placas tectônicas, originados no interior da Terra.",c:"Esses são os agentes INTERNOS: eles vêm do interior da Terra e constroem o relevo, em vez de desgastá-lo."},
+ {t:"somente as ações humanas, como a agricultura e a construção de cidades.",c:"As ações humanas entram, sim, nos agentes externos — mas não estão sozinhas: chuvas, rios, ventos, mares e geleiras também são agentes externos."},
+ {t:"o conjunto de rochas e minerais que forma o subsolo do planeta.",c:"Rochas e minerais são o material sobre o qual os agentes atuam, e não os agentes em si."}]},
+
+{n:3,en:"Numa região onde os dias são muito quentes e as noites muito frias, as rochas dilatam e contraem até rachar, mas continuam sendo o mesmo material por dentro. Esse é um caso de intemperismo:",
+ alts:[
+ {t:"físico.",c:"Correta. No intemperismo físico (ou mecânico), as alterações de temperatura e a força dos ventos desagregam a rocha sem mudar sua composição."},
+ {t:"químico.",c:"No intemperismo químico haveria decomposição: a água decompõe os minerais e o material muda de composição. No caso descrito, a rocha continua a mesma."},
+ {t:"biológico.",c:"O intemperismo biológico depende da ação de seres vivos — raízes, bactérias e fungos. Aqui quem age é a variação de temperatura."},
+ {t:"sedimentar.",c:"Não existe “intemperismo sedimentar”. Sedimentar é um tipo de rocha, formada pela compactação de sedimentos."}]},
+
+{n:4,en:"As raízes das plantas fazem pressão e desagregam as rochas, enquanto bactérias e fungos se proliferam e contribuem para decompô-las. Esse processo recebe o nome de intemperismo:",
+ alts:[
+ {t:"biológico.",c:"Correta. Quando a decomposição e a desagregação são ocasionadas por seres vivos, o intemperismo é chamado de biológico (ou bioquímico)."},
+ {t:"físico.",c:"O físico é provocado pelas alterações de temperatura e pela força dos ventos, sem participação de seres vivos."},
+ {t:"químico.",c:"O químico é o da água líquida decompondo quimicamente os minerais. Aqui quem age são os seres vivos."},
+ {t:"tectônico.",c:"Não existe intemperismo tectônico. O que é tectônico são os movimentos das placas, que são agentes internos."}]},
+
+{n:5,en:"Qual alternativa apresenta corretamente a diferença entre intemperismo e erosão?",
+ alts:[
+ {t:"O intemperismo decompõe e desagrega a rocha no lugar onde ela está; a erosão remove e transporta os fragmentos resultantes.",c:"Correta. O intemperismo estraga a rocha no próprio lugar; a erosão é o passo seguinte, de remoção e transporte dos sedimentos."},
+ {t:"O intemperismo remove e transporta os fragmentos; a erosão decompõe a rocha no lugar onde ela está.",c:"As definições estão trocadas. Quem remove e transporta é a erosão."},
+ {t:"São dois nomes diferentes para o mesmo processo de desgaste das rochas.",c:"São processos distintos, ainda que aconteçam juntos: um quebra, o outro carrega."},
+ {t:"O intemperismo só acontece nos planaltos e a erosão só acontece nas planícies.",c:"Os dois processos podem ocorrer em qualquer forma de relevo. O que muda de um lugar para outro é qual deles predomina."}]},
+
+{n:6,en:"As cadeias montanhosas, também chamadas de cordilheiras, originam-se:",
+ alts:[
+ {t:"do encontro de placas tectônicas, em que a placa mais densa mergulha e a outra sofre soerguimento e dobramento.",c:"Correta. As cadeias montanhosas nascem do choque entre placas: uma sofre subducção e a outra é elevada e dobrada."},
+ {t:"do acúmulo de sedimentos trazidos pelos rios ao longo de milhões de anos.",c:"Esse acúmulo forma as planícies, e não as cadeias montanhosas."},
+ {t:"da erosão provocada pelo vento nas regiões desérticas e semiáridas.",c:"O vento desgasta o relevo; ele não constrói as maiores elevações da superfície."},
+ {t:"de falhas tectônicas que rebaixam o terreno até ficar abaixo do nível do mar.",c:"Isso descreve a formação de uma depressão absoluta, o oposto de uma cadeia montanhosa."}]},
+
+{n:7,en:"Quando uma placa oceânica encontra uma placa continental, o que acontece?",
+ alts:[
+ {t:"A oceânica, por ser mais densa, sofre subducção; a continental sofre soerguimento e dobramento.",c:"Correta. A placa oceânica é mais densa e mergulha; a continental é empurrada para cima, enrugando-se e formando montanhas."},
+ {t:"A continental, por ser mais densa, mergulha sob a placa oceânica.",c:"A placa continental é MENOS densa que a oceânica — por isso ela é elevada, e não afundada."},
+ {t:"As duas placas afundam ao mesmo tempo, formando uma depressão absoluta.",c:"No encontro entre placas uma mergulha e a outra é soerguida; elas não afundam juntas."},
+ {t:"Nenhuma das duas se move: o relevo daquela área passa a ser formado apenas por erosão.",c:"O encontro de placas é justamente um movimento, e é ele que origina as maiores elevações da superfície."}]},
+
+{n:8,en:"Assinale a alternativa que descreve corretamente um planalto:",
+ alts:[
+ {t:"Terreno extenso e pouco acidentado, mais elevado que as áreas ao redor, em que os processos erosivos predominam sobre os de sedimentação.",c:"Correta. No planalto o desgaste supera a acumulação de sedimentos — ele perde mais material do que recebe."},
+ {t:"Área relativamente plana formada pelo depósito de sedimentos, em que predomina o processo de sedimentação.",c:"Isso é a planície. Nela prevalece a sedimentação: a área recebe mais sedimentos do que perde."},
+ {t:"Área situada abaixo do nível do mar, formada por falhas tectônicas ou por erosão.",c:"Isso descreve uma depressão absoluta."},
+ {t:"Maior elevação da superfície terrestre, formada pelo choque entre placas tectônicas.",c:"Isso é uma cadeia montanhosa. O planalto é mais baixo e bem menos acidentado."}]},
+
+{n:9,en:"Numa viagem, o jovem aprendiz observa um paredão de rocha com o topo totalmente plano e bordas que caem de forma acentuada, lembrando um degrau gigante. Ele está diante de uma:",
+ alts:[
+ {t:"chapada.",c:"Correta. A chapada é a forma com topo plano e quedas acentuadas, que lembram um degrau — e aparece dentro dos planaltos."},
+ {t:"serra.",c:"A serra também aparece nos planaltos, mas é a forma de relevo marcada por desníveis acentuados, e não pelo topo plano."},
+ {t:"planície.",c:"A planície é um terreno plano e baixo formado pelo depósito de sedimentos, sem paredões nem degraus."},
+ {t:"depressão absoluta.",c:"A depressão absoluta é uma área rebaixada, situada abaixo do nível do mar."}]},
+
+{n:10,en:"Um terreno está a 300 metros acima do nível do mar, mas é mais baixo do que todas as regiões vizinhas. Trata-se de uma:",
+ alts:[
+ {t:"depressão relativa.",c:"Correta. A depressão relativa está em nível inferior ao de outras regiões próximas, com altitudes que em geral variam de 100 a 500 metros acima do nível do mar."},
+ {t:"depressão absoluta.",c:"A absoluta fica ABAIXO do nível do mar, como o mar Morto, cerca de 400 metros abaixo. O terreno descrito está 300 metros acima."},
+ {t:"planície de sedimentação.",c:"A planície é definida pelo depósito de sedimentos, e não pela comparação de altitude com as áreas vizinhas."},
+ {t:"chapada.",c:"A chapada tem topo plano e quedas acentuadas, e é uma forma elevada dentro de um planalto — não uma área rebaixada."}]},
+
+{n:11,en:"Desde a Antiguidade, as planícies têm sido intensamente ocupadas pelas sociedades humanas. O principal motivo é que elas:",
+ alts:[
+ {t:"são áreas planas formadas pelo depósito de sedimentos, o que as deixa com solos férteis e fáceis de ocupar.",c:"Correta. A forma aplainada e a fertilidade dos solos explicam a ocupação intensa — como às margens do rio Nilo, onde as cheias fertilizavam o solo."},
+ {t:"são as áreas mais elevadas do relevo, o que facilitava a defesa contra inimigos.",c:"As áreas elevadas é que serviam à defesa militar, como os castelos medievais. A planície é o terreno baixo."},
+ {t:"perdem mais sedimentos do que recebem, o que mantém o solo sempre limpo de impurezas.",c:"É o contrário: na planície prevalece a sedimentação, ou seja, ela recebe mais sedimentos do que perde — e é isso que a torna fértil."},
+ {t:"exigem a técnica do terraceamento para que a agricultura seja possível.",c:"O terraceamento é usado em áreas de altas montanhas, com relevo íngreme, justamente porque ali falta terreno plano."}]},
+
+{n:12,en:"Sobre a distribuição da água no planeta, é correto afirmar que:",
+ alts:[
+ {t:"as águas oceânicas representam 97,2% do total, enquanto as continentais correspondem a apenas 2,8%.",c:"Correta. A maior parte da água da Terra é salgada; a água doce das terras emersas é uma fatia pequena do total."},
+ {t:"as águas continentais representam 97,2% do total, enquanto as oceânicas correspondem a 2,8%.",c:"Os valores estão invertidos. As oceânicas é que são a maior parte."},
+ {t:"água doce e água salgada estão distribuídas praticamente pela metade.",c:"Está longe disso: as águas doces são apenas 2,8% do total, e a maior parte delas está congelada nas geleiras."},
+ {t:"os rios e lagos concentram a maior parte da água doce do planeta.",c:"Rios e lagos juntos representam só 0,013% de toda a água. A maior parte da água doce — cerca de 76% — está nas geleiras."}]},
+
+{n:13,en:"A quantidade de água no planeta é praticamente a mesma há bilhões de anos. Isso acontece porque:",
+ alts:[
+ {t:"a água não desaparece: ela apenas muda de estado físico e de lugar, circulando entre as terras emersas, os oceanos e a atmosfera.",c:"Correta. É exatamente isso o ciclo hidrológico: o que muda é o estado físico e a distribuição da água, nunca a quantidade."},
+ {t:"novas quantidades de água são produzidas nos oceanos a cada chuva que cai sobre eles.",c:"A chuva devolve ao oceano água que já existia e havia evaporado; nada de novo é produzido."},
+ {t:"a água que evapora é reposta pelo derretimento das geleiras, que crescem no mesmo ritmo.",c:"As geleiras fazem parte do ciclo, mas não são uma fonte extra de água: toda a água já está no sistema."},
+ {t:"as plantas produzem água nova durante a transpiração e devolvem esse volume à atmosfera.",c:"Na transpiração as plantas eliminam para a atmosfera a água que absorveram do solo. Elas movimentam a água, não a criam."}]},
+
+{n:14,en:"Sobre a diferença entre mares e oceanos, assinale a alternativa correta:",
+ alts:[
+ {t:"Os mares são menores e menos profundos e ficam limitados quase totalmente pelos continentes; os oceanos são grandes extensões de água salgada que circundam os continentes.",c:"Correta. Além disso, os mares apresentam maior variedade de temperatura, salinidade e transparência das águas."},
+ {t:"Os oceanos são menores e menos profundos e ficam cercados pelos continentes; os mares circundam todas as terras emersas.",c:"As definições estão trocadas: quem circunda os continentes e as terras emersas são os oceanos."},
+ {t:"Os mares são formados por água doce e os oceanos, por água salgada.",c:"Os dois são de água salgada. A diferença está no tamanho, na profundidade e na variedade das águas."},
+ {t:"Não há diferença: mar e oceano são apenas dois nomes para a mesma coisa.",c:"Existe diferença, e ela é justamente o que a divisão em cinco oceanos e mais de 100 mares procura organizar."}]},
+
+{n:15,en:"Um bairro teve todas as suas ruas asfaltadas e, desde então, passou a alagar sempre que chove forte. A explicação geográfica para isso é que a impermeabilização do solo:",
+ alts:[
+ {t:"dificulta a infiltração da água, aumenta o escoamento superficial e favorece o acúmulo de água na superfície.",c:"Correta. Com menos infiltração, sobra mais água correndo por cima, em grande velocidade e quantidade — o que provoca os alagamentos."},
+ {t:"aumenta a infiltração da água e melhora o abastecimento dos reservatórios subterrâneos.",c:"É o contrário: a impermeabilização diminui a infiltração e, com isso, reduz o abastecimento dos reservatórios subterrâneos."},
+ {t:"não interfere no ciclo da água, já que a chuva continua caindo na mesma quantidade.",c:"A chuva é a mesma, mas o caminho que a água faz depois muda completamente — e é isso que causa o alagamento."},
+ {t:"reduz o escoamento superficial, porque o asfalto comum absorve a água da chuva.",c:"O asfalto comum não absorve a água: ele impermeabiliza. Quem permite alguma infiltração é o asfalto permeável, uma tecnologia mais nova."}]}
+];
+
+prepararQuestoes(QUESTOES,20260929);
+
+var KEY='geo6_relevo_hidrosfera_quiz_v1';
+var store=criarStore(KEY,{marc:{},corrigido:false,quando:''});
+var S=store.ler();
+var CHAVE_COD='geo6_relevo_hidrosfera_quiz_codigo';
+
+function salvar(){S.quando=agoraBR();S.acertos=acertos();S.total=QUESTOES.length;store.gravar(S);carimbo();}
+function carimbo(){document.getElementById('status').textContent='💾 Salvo automaticamente — última vez: '+(S.quando||agoraBR());}
+
+function acertos(){var c=0;QUESTOES.forEach(function(q){if(S.marc[q.n]===q.certa)c++;});return c;}
+function respondidas(){var c=0;QUESTOES.forEach(function(q){if(S.marc[q.n]!==undefined)c++;});return c;}
+
+function render(){
+  var alvo=document.getElementById('questoes');alvo.innerHTML='';
+  QUESTOES.forEach(function(q){
+    var sec=document.createElement('section');sec.className='questao';
+    var h='<span class="qnum">Questão '+pad2(q.n)+'</span><p class="enunciado">'+q.en+'</p><div class="alts">';
+    q.ordem.forEach(function(a,i){
+      var cls='alt';
+      if(S.corrigido){
+        if(i===q.certa)cls+=' certa';
+        else if(S.marc[q.n]===i)cls+=' errada';
+        else cls+=' errada';
+      }else if(S.marc[q.n]===i)cls+=' marcada';
+      h+='<button type="button" class="'+cls+'" data-q="'+q.n+'" data-i="'+i+'"'+(S.corrigido?' disabled':'')+'>'+
+         '<span class="letra">'+LETRAS[i]+')</span><span>'+a.t+'</span></button>';
+      if(S.corrigido)h+='<p class="coment'+(i===q.certa?' ok':'')+'">'+(i===q.certa?'✅ ':'▫️ ')+a.c+'</p>';
+    });
+    h+='</div>';
+    if(S.corrigido){
+      var m=S.marc[q.n];
+      h+='<p class="coment" style="padding-left:0;margin-top:12px"><b>'+
+         (m===q.certa?'✅ Você acertou.':(m===undefined?'⬜ Você não respondeu esta questão.':'❌ Você marcou a letra '+LETRAS[m]+'.'))+
+         '</b> A resposta certa é a letra <b>'+LETRAS[q.certa]+'</b>.</p>';
+    }
+    sec.innerHTML=h;alvo.appendChild(sec);
+  });
+  document.querySelectorAll('.alt').forEach(function(b){
+    b.addEventListener('click',function(){
+      if(S.corrigido)return;
+      S.marc[parseInt(b.dataset.q,10)]=parseInt(b.dataset.i,10);
+      salvar();render();
+    });
+  });
+  progresso();
+  document.getElementById('btCorrigir').style.display=S.corrigido?'none':'inline-block';
+  if(S.corrigido)mostrarResultado();else document.getElementById('resultado').innerHTML='';
+}
+
+function progresso(){
+  var r=respondidas();
+  document.getElementById('barra').style.width=(r/QUESTOES.length*100)+'%';
+  document.getElementById('txtProg').textContent=r+' de '+QUESTOES.length+' respondidas'+(S.corrigido?' — quiz corrigido.':'.');
+}
+
+function mostrarResultado(){
+  var ac=acertos(),tot=QUESTOES.length,pc=Math.round(ac/tot*100);
+  var cod=gerarCodigo('MED',ac,CHAVE_COD);
+  var msg = pc>=80?'Excelente! O terreno está bem mapeado.':pc>=60?'Bom trabalho. Volte ao Resumo nas camadas que escaparam.':'Vale reler o Resumo com calma e refazer o quiz depois.';
+  document.getElementById('resultado').innerHTML=
+    '<div class="placar"><p style="margin:0 0 6px;color:var(--texto2)">Sua sondagem</p>'+
+    '<p class="nota">'+ac+' / '+tot+'</p>'+
+    '<p style="margin:8px 0 0">'+pc+'% de acerto. '+msg+'</p>'+
+    '<p style="margin:16px 0 4px"><b>Código de liberação do gabarito:</b></p>'+
+    '<p class="codigo">'+cod+'</p>'+
+    '<p style="font-size:14.5px;color:var(--texto2);margin:6px 0 0">Anote este código: ele abre o gabarito comentado aqui embaixo e também o Relatório para os pais, na página inicial.</p>'+
+    '</div>'+
+    '<div class="questao" id="portao"><p class="enunciado">🔐 Gabarito comentado</p>'+
+    '<p style="font-size:15.5px;color:var(--texto2)">Digite o código acima para liberar os comentários de cada alternativa.</p>'+
+    '<div class="entrada-cod"><input type="text" id="cod" placeholder="MED-00-XX" autocomplete="off">'+
+    '<button class="ocre" id="btAbrir">Abrir gabarito</button></div>'+
+    '<p class="aviso" id="avCod"></p></div>';
+  document.getElementById('btAbrir').onclick=function(){
+    var v=(document.getElementById('cod').value||'').trim().toUpperCase();
+    if(v===cod){
+      S.gabarito=true;salvar();render();
+    }else{
+      document.getElementById('avCod').textContent='⚠️ Código incorreto. Confira as letras e os números — o código é o que aparece logo acima.';
+    }
+  };
+  if(!S.gabarito){
+    document.querySelectorAll('.coment').forEach(function(p){p.style.display='none';});
+  }else{
+    var pt=document.getElementById('portao');
+    if(pt)pt.innerHTML='<p class="enunciado">🔓 Gabarito comentado liberado</p><p style="font-size:15.5px;color:var(--texto2);margin:0">Os comentários de cada alternativa estão em cada questão acima: a correta em verde, as demais com a explicação de por que não servem.</p>';
+  }
+}
+
+document.getElementById('btCorrigir').onclick=function(){
+  if(respondidas()<QUESTOES.length){
+    aviso('Faltam questões','Você ainda não marcou todas as 15 questões. Responda todas antes de corrigir — chutar também vale, o importante é fechar o quiz inteiro.');
+    return;
+  }
+  S.corrigido=true;salvar();render();
+  document.getElementById('resultado').scrollIntoView({behavior:'smooth',block:'start'});
+};
+
+document.getElementById('btExportar').onclick=function(){
+  var d={marc:S.marc,corrigido:S.corrigido,quando:S.quando,acertos:acertos(),total:QUESTOES.length};
+  var blob=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='quiz-geografia6-relevo-hidrosfera.json';a.click();
+};
+document.getElementById('btImportar').onclick=function(){document.getElementById('arquivo').click();};
+document.getElementById('arquivo').onchange=function(e){
+  var f=e.target.files[0];if(!f)return;
+  var r=new FileReader();
+  r.onload=function(){
+    try{var d=JSON.parse(r.result);S.marc=d.marc||{};S.corrigido=!!d.corrigido;salvar();render();
+      aviso('Pronto','Seu progresso foi importado com sucesso.');}
+    catch(err){aviso('Ops','Não consegui ler esse arquivo. Ele precisa ser o .json exportado por este material.');}
+  };
+  r.readAsText(f);
+};
+document.getElementById('btZerar').onclick=function(){
+  aviso('Zerar tudo?','Isso apaga todas as respostas deste quiz e o código de liberação. Não dá para desfazer.',function(){
+    store.limpar();try{localStorage.removeItem(CHAVE_COD);}catch(e){}
+    S={marc:{},corrigido:false,quando:''};render();carimbo();
+  },true);
+};
+
+render();carimbo();
+</script>
+</body>
+</html>

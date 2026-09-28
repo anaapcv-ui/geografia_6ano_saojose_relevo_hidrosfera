@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Simulado — Geografia 6º ano | Corte do Terreno</title>
+<link rel="stylesheet" href="estilo.css">
+<style>
+  header.topo{background:#0a2338;border-bottom:4px solid #c0392b;padding:26px 20px 18px;border-radius:7px 7px 0 0}
+  header.topo::after{background:repeating-linear-gradient(90deg,#c0392b 0 14px,transparent 14px 22px)}
+  .barra i{background:linear-gradient(90deg,#c0392b,#e0625a)}
+  .selo.prova{background:#c0392b;color:#fff}
+  button.prova{background:#c0392b;color:#fff;border-color:#c0392b;font-weight:700}
+  button.prova:hover{background:#d9503f}
+  .cabecalho-prova{background:#0a2338;border:1px solid var(--linha);border-top:0;border-radius:0 0 7px 7px;
+    padding:15px 20px;margin:0 0 22px;font-size:15px;color:var(--texto2);display:flex;flex-wrap:wrap;gap:8px 26px}
+  .cabecalho-prova b{color:var(--texto)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="topo">
+  <h1 class="titulo"><span class="sub">Corte do Terreno</span>Simulado da Avaliação</h1>
+  <div class="faixa">
+    <span>Colégio São José</span>
+    <span>6º ano · Geografia</span>
+    <span>Relevo e Hidrosfera</span>
+    <span>30 questões</span>
+  </div>
+  <p style="margin:0"><span class="selo prova">Camada 4 de 5 — valendo de verdade</span></p>
+</header>
+<div class="cabecalho-prova">
+  <span><b>Conteúdo:</b> Relevo e solos · Formas de relevo · Hidrosfera · Uso das águas continentais</span>
+  <span><b>Páginas:</b> 164-165 · 180-183 · 204-210 · 225-228</span>
+  <span><b>Data da avaliação:</b> 29/09</span>
+</div>
+
+<nav class="abas">
+  <a href="leitura-guiada.html">📖 1. Leitura Guiada</a>
+  <a href="quiz.html">🎯 2. Quiz</a>
+  <a href="resumo.html">🗺️ 3. Resumo</a>
+  <a href="simulado.html" class="atual">📝 4. Simulado</a>
+  <a href="index.html">🏠 Início</a>
+</nav>
+
+<div class="painel">
+  <div class="status" id="status">Carregando seu progresso…</div>
+  <div class="btns">
+    <button id="btExportar">📥 Exportar</button>
+    <button id="btImportar">📤 Importar</button>
+    <button id="btZerar">🗑️ Zerar tudo</button>
+  </div>
+</div>
+<input type="file" id="arquivo" accept="application/json" style="display:none">
+
+<div class="progresso">
+  <div class="barra"><i id="barra"></i></div>
+  <p id="txtProg">0 de 30 respondidas.</p>
+</div>
+
+<p class="aviso-caixa">
+<b>Como funciona:</b> 30 questões no formato da prova — objetivas, com <b>3 questões de números romanos</b>
+(afirmativas I, II, III e IV). Responda todas e clique em <b>Corrigir tudo</b>. Você recebe a nota e um
+<b>código de liberação SIM</b>, que abre o gabarito comentado — com a explicação de cada alternativa, inclusive das erradas.
+</p>
+
+<div id="questoes"></div>
+
+<div style="margin:24px 0">
+  <button class="prova" id="btCorrigir" style="font-size:17px;padding:14px 26px">✔️ Corrigir tudo</button>
+</div>
+
+<div id="resultado"></div>
+
+<div class="rodape">
+  <span>Terminou o corte inteiro →</span>
+  <a href="index.html">🏠 Voltar ao Início</a>
+</div>
+
+</div>
+
+<script src="motor.js"></script>
+<script>
+/* ===== 30 QUESTÕES — alts[0] é SEMPRE a correta ===== */
+var QUESTOES=[
+{n:1,en:"Assinale a alternativa que apresenta APENAS agentes externos do relevo:",
+ alts:[
+ {t:"Chuvas, rios, ventos, geleiras e as ações humanas.",c:"Correta. Os agentes externos atuam no desgaste e na modelagem das formas da superfície — e as ações humanas fazem parte desse grupo."},
+ {t:"Movimento das placas tectônicas, subducção e dobramento.",c:"Todos esses são agentes internos: vêm do interior da Terra e constroem o relevo."},
+ {t:"Falhas tectônicas, soerguimento e vulcanismo.",c:"Também são fenômenos internos, ligados à dinâmica do interior do planeta."},
+ {t:"Rochas sedimentares, minerais e solo.",c:"Esses são materiais sobre os quais os agentes atuam, e não agentes."}]},
+
+{n:2,en:"Nas áreas de relevo íngreme, as quedas d'água são aproveitadas para gerar energia hidrelétrica. Sobre a construção dessas usinas, é correto afirmar que ela:",
+ alts:[
+ {t:"provoca impactos sociais e ambientais, como o deslocamento forçado de populações ribeirinhas e o desmatamento, sendo ainda mais grave em áreas de planície.",c:"Correta. Em planície a inundação do represamento alcança grande extensão, o que amplia os impactos."},
+ {t:"não provoca nenhum impacto, pois a energia gerada é totalmente limpa.",c:"A energia é renovável, mas a obra provoca impactos sociais e ambientais reconhecidos, como o deslocamento de populações ribeirinhas."},
+ {t:"causa impactos menores quando instalada em planícies, porque o terreno é plano.",c:"É o contrário: em planície a área inundada é muito maior, e os impactos ficam mais graves."},
+ {t:"depende exclusivamente da existência de aquíferos profundos na região.",c:"O que a usina aproveita é a queda d'água de um rio represado, e não a água subterrânea."}]},
+
+{n:3,en:"O intemperismo químico caracteriza-se por:",
+ alts:[
+ {t:"a água líquida decompor quimicamente os minerais da rocha, provocando um rearranjo químico do material.",c:"Correta. No intemperismo químico o material deixa de ser o que era — há decomposição, e não apenas quebra."},
+ {t:"a variação de temperatura e a força dos ventos fragmentarem a rocha sem mudar sua composição.",c:"Isso é o intemperismo físico (ou mecânico): a rocha se parte, mas continua sendo o mesmo material."},
+ {t:"as raízes das plantas e a ação de bactérias e fungos desagregarem a rocha.",c:"Isso é o intemperismo biológico, também chamado de bioquímico."},
+ {t:"os sedimentos se acumularem e se compactarem, formando rochas novas.",c:"Isso descreve a formação das rochas sedimentares, que acontece depois da sedimentação."}]},
+
+{n:4,en:"Sobre os três tipos de intemperismo, é correto afirmar que eles:",
+ alts:[
+ {t:"podem ocorrer ao mesmo tempo, pois a água é capaz de fragmentar o material rochoso, reagir quimicamente com ele e formar soluções ácidas em contato com a matéria orgânica do solo.",c:"Correta. Os tipos não se revezam: atuam simultaneamente sobre a mesma rocha."},
+ {t:"ocorrem sempre em ordem: primeiro o físico, depois o químico e por último o biológico.",c:"Não existe essa ordem obrigatória — os processos podem ocorrer ao mesmo tempo."},
+ {t:"nunca atuam juntos: apenas um tipo pode agir em cada região do planeta.",c:"Ao contrário: numa mesma rocha podem agir os três."},
+ {t:"só acontecem em regiões desérticas, onde a rocha fica exposta.",c:"O intemperismo ocorre em todo tipo de região; o que muda é qual agente tem mais força em cada clima."}]},
+
+{n:5,en:"A velocidade e a intensidade dos processos erosivos dependem, entre outros fatores, de:",
+ alts:[
+ {t:"clima, tipo de rocha, solo e relevo local.",c:"Correta. São esses fatores que explicam por que a erosão é muito diferente de uma região para outra."},
+ {t:"apenas da idade geológica da rocha.",c:"A idade influencia, mas sozinha não explica: clima, solo e relevo pesam muito."},
+ {t:"somente da quantidade de habitantes da região.",c:"A ocupação humana influencia, mas os fatores naturais de clima, rocha, solo e relevo são determinantes."},
+ {t:"exclusivamente da profundidade do lençol freático.",c:"O lençol freático tem relação com a infiltração, não com a intensidade dos processos erosivos de superfície."}]},
+
+{n:6,en:"As rochas sedimentares originam-se:",
+ alts:[
+ {t:"da compactação dos sedimentos que se acumularam em depósitos sedimentares.",c:"Correta. Depois da sedimentação, a compactação do material acumulado dá origem a essas rochas."},
+ {t:"do resfriamento do magma no interior da Terra.",c:"Esse é o processo de formação das rochas magmáticas, e não das sedimentares."},
+ {t:"do choque direto entre duas placas tectônicas.",c:"O choque entre placas origina cadeias montanhosas, não rochas sedimentares."},
+ {t:"da evaporação da água dos oceanos.",c:"A evaporação faz parte do ciclo da água e não forma rochas."}]},
+
+{n:7,en:"Numa região semiárida, com pouca chuva e pouca vegetação, o principal agente responsável pelos processos erosivos tende a ser:",
+ alts:[
+ {t:"o vento.",c:"Correta. Os ventos têm grande atuação nos processos erosivos que ocorrem em regiões desérticas ou semiáridas."},
+ {t:"a água dos rios.",c:"A erosão pela água dos rios é a mais intensa em áreas de clima tropical e temperado, onde a água é abundante."},
+ {t:"as geleiras.",c:"As geleiras atuam em regiões de altas latitudes ou de elevadas altitudes, e não no semiárido."},
+ {t:"as marés.",c:"As marés atuam no litoral, e não no interior das regiões semiáridas."}]},
+
+{n:8,rom:true,en:"Sobre intemperismo, erosão e sedimentação, analise as afirmativas:",
+ afirm:["I. O intemperismo decompõe e desagrega a rocha no próprio local onde ela se encontra.",
+        "II. A erosão é responsável pela remoção e pelo transporte dos sedimentos.",
+        "III. A sedimentação ocorre nas áreas mais altas do relevo, de onde os sedimentos partem.",
+        "IV. Intemperismo e erosão agem continuamente e provocam o desgaste do relevo."],
+ alts:[
+ {t:"Apenas I, II e IV estão corretas.",c:"Correta. A afirmativa III é a errada: a sedimentação ocorre nas áreas mais BAIXAS, para onde os sedimentos são transportados."},
+ {t:"Apenas I e III estão corretas.",c:"A III é falsa (a sedimentação ocorre nas áreas mais baixas) e as afirmativas II e IV estão corretas."},
+ {t:"Apenas II, III e IV estão corretas.",c:"A III é falsa, e a I está correta: o intemperismo age sobre a rocha no lugar onde ela está."},
+ {t:"I, II, III e IV estão corretas.",c:"A III está errada: os sedimentos partem das áreas altas, mas se depositam nas áreas mais baixas."}]},
+
+{n:9,en:"Sobre os reservatórios de água subterrânea, assinale a alternativa correta:",
+ alts:[
+ {t:"Os lençóis freáticos estão em pequena profundidade e abastecem poços caseiros, ficando mais sujeitos à contaminação; os aquíferos estão em profundidades maiores e exigem poços artesianos.",c:"Correta. A profundidade é o que separa os dois — e é ela que explica a diferença no risco de contaminação."},
+ {t:"Os aquíferos estão em pequena profundidade e abastecem poços caseiros; os lençóis freáticos exigem equipamentos de extração.",c:"As descrições estão trocadas: quem está raso e abastece poços caseiros é o lençol freático."},
+ {t:"Lençol freático e aquífero são nomes diferentes para a mesma coisa.",c:"São reservatórios diferentes, separados pela profundidade e pela forma de extração da água."},
+ {t:"Nenhum dos dois pode ser contaminado, pois as rochas filtram totalmente as impurezas.",c:"As rochas filtram boa parte das impurezas, mas essas águas estão sim sujeitas à contaminação por resíduos agrícolas e industriais."}]},
+
+{n:10,en:"As cadeias montanhosas geralmente apresentam formas íngremes porque:",
+ alts:[
+ {t:"são formações geológicas de períodos recentes e foram submetidas a pouco desgaste erosivo ao longo do tempo.",c:"Correta. Por serem jovens em tempo geológico, os agentes externos ainda tiveram pouco tempo para arredondá-las."},
+ {t:"são as formações mais antigas do planeta e já perderam quase todo o seu material.",c:"É o contrário: quanto mais antiga a forma, mais desgastada e arredondada ela tende a estar."},
+ {t:"se formaram pelo acúmulo de sedimentos trazidos pelos rios ao longo de milhões de anos.",c:"Esse acúmulo forma planícies. As cadeias montanhosas nascem do encontro de placas tectônicas."},
+ {t:"estão localizadas exclusivamente em regiões desérticas, onde não há chuva para desgastá-las.",c:"Existem cadeias montanhosas em todos os continentes e nos mais variados climas."}]},
+
+{n:11,en:"Por ter grande extensão, a superfície de um planalto pode apresentar outras formas de relevo, como:",
+ alts:[
+ {t:"serras, morros, vales, colinas e chapadas.",c:"Correta. Todas essas feições aparecem dentro de um planalto — elas não são formas separadas dele."},
+ {t:"apenas planícies e depressões absolutas.",c:"Planícies e depressões são outras formas de relevo, situadas em áreas mais baixas, e não feições internas do planalto."},
+ {t:"somente cordilheiras e cadeias montanhosas.",c:"As cadeias montanhosas se originam do encontro de placas e são muito mais elevadas que os planaltos."},
+ {t:"exclusivamente meandros e foz de rios.",c:"Meandros e foz são elementos da hidrografia, e não formas de relevo do planalto."}]},
+
+{n:12,en:"Sobre as depressões absolutas, assinale a alternativa correta:",
+ alts:[
+ {t:"Estão em nível inferior ao do mar; a maior do mundo é a do mar Morto, entre a Jordânia e Israel, com cerca de 400 metros abaixo do nível do mar.",c:"Correta. A palavra “absoluta” indica a comparação com o nível do mar."},
+ {t:"Estão sempre entre 100 e 500 metros acima do nível do mar, com ondulações suaves.",c:"Essa é a descrição da depressão RELATIVA, que é mais baixa que as regiões próximas, mas fica acima do nível do mar."},
+ {t:"São formas elevadas com topo plano e quedas acentuadas em degrau.",c:"Isso é uma chapada, que é uma feição dos planaltos."},
+ {t:"São formadas exclusivamente pelo acúmulo de sedimentos trazidos pelos rios.",c:"As depressões são formadas por falhas tectônicas ou por erosão. Quem se forma por acúmulo de sedimentos é a planície."}]},
+
+{n:13,en:"Nas planícies prevalece o processo de sedimentação porque:",
+ alts:[
+ {t:"a área recebe mais sedimentos do que perde, o que resulta em terrenos planos e férteis.",c:"Correta. Embora os processos erosivos também atuem ali, o acúmulo supera a perda."},
+ {t:"os processos erosivos são mais intensos ali do que em qualquer outra forma de relevo.",c:"Se a erosão predominasse, a planície não se formaria. Onde a erosão predomina é no planalto."},
+ {t:"elas são as áreas mais elevadas do relevo, de onde o material sempre desce.",c:"As planícies são áreas baixas: elas recebem o material que desce das áreas mais elevadas."},
+ {t:"nelas não ocorre nenhum tipo de erosão.",c:"A erosão ocorre na planície também; o que acontece é que a sedimentação prevalece sobre ela."}]},
+
+{n:14,en:"O terraceamento pode ser definido como:",
+ alts:[
+ {t:"a abertura de terraços (degraus) nas encostas das montanhas, o que possibilita a agricultura em áreas de relevo íngreme.",c:"Correta. É a técnica adotada por povos que se fixaram em regiões montanhosas, como nas Filipinas, na Indonésia, na China e no Vietnã."},
+ {t:"o represamento de rios para a geração de energia elétrica em áreas de relevo íngreme.",c:"Isso descreve a construção de usinas hidrelétricas."},
+ {t:"o processo natural de acúmulo de sedimentos que forma as planícies.",c:"Esse processo natural é a sedimentação. O terraceamento é uma técnica humana."},
+ {t:"o sistema de dutos subterrâneos usado para escoar a água da chuva nas cidades.",c:"Esse sistema é o das galerias pluviais."}]},
+
+{n:15,en:"A atividade humana que mais consome água no mundo é:",
+ alts:[
+ {t:"a irrigação de áreas agrícolas, responsável por cerca de 70% do uso da água doce do mundo.",c:"Correta. A quantidade varia conforme o produto cultivado, o clima, o solo e as técnicas aplicadas."},
+ {t:"o abastecimento doméstico das residências urbanas.",c:"O uso doméstico é importante, mas consome muito menos que a irrigação agrícola."},
+ {t:"o lazer em praias, rios e parques aquáticos.",c:"O lazer é um dos usos dos recursos hídricos, mas está longe de ser o maior consumidor."},
+ {t:"a navegação e o transporte de mercadorias pelos rios.",c:"O transporte usa o rio como via, mas não consome a água como a irrigação consome."}]},
+
+{n:16,rom:true,en:"Sobre as formas do relevo terrestre, analise as afirmativas:",
+ afirm:["I. Nos planaltos, os processos erosivos predominam em comparação aos de sedimentação.",
+        "II. As depressões relativas estão sempre situadas abaixo do nível do mar.",
+        "III. As chapadas são formas com topo plano e quedas acentuadas, que lembram um degrau.",
+        "IV. As cadeias montanhosas originam-se do encontro de placas tectônicas."],
+ alts:[
+ {t:"Apenas I, III e IV estão corretas.",c:"Correta. A afirmativa II é a errada: quem fica abaixo do nível do mar é a depressão ABSOLUTA. A relativa é apenas mais baixa que as regiões próximas."},
+ {t:"Apenas I e II estão corretas.",c:"A II é falsa, e as afirmativas III e IV também estão corretas."},
+ {t:"Apenas II e III estão corretas.",c:"A II é falsa: a depressão relativa fica acima do nível do mar, entre 100 e 500 metros de altitude."},
+ {t:"I, II, III e IV estão corretas.",c:"A II está errada: confundir depressão relativa com absoluta é justamente a pegadinha mais comum deste conteúdo."}]},
+
+{n:17,en:"A hidrosfera é composta por:",
+ alts:[
+ {t:"toda a água existente na Terra, distribuída por oceanos, mares, rios, lagos, geleiras e águas subterrâneas, além da água presente na atmosfera.",c:"Correta. A hidrosfera inclui a água em todos os estados físicos e em todos os reservatórios, inclusive na atmosfera."},
+ {t:"apenas a água dos oceanos e dos mares do planeta.",c:"Essas são as águas oceânicas, que são a maior parte da hidrosfera, mas não toda ela."},
+ {t:"somente a água doce dos rios, dos lagos e das geleiras.",c:"Essas são as águas continentais — apenas 2,8% do total."},
+ {t:"apenas a água que se encontra em estado líquido.",c:"A água da hidrosfera aparece em três estados físicos: sólido, líquido e gasoso."}]},
+
+{n:18,en:"Sobre as águas continentais, é correto afirmar que elas:",
+ alts:[
+ {t:"encontram-se nas terras emersas — rios, lagos, aquíferos e geleiras — e correspondem a 2,8% do total de água do planeta.",c:"Correta. Terra emersa é a terra que se encontra acima do nível do mar."},
+ {t:"são formadas pelos mares e oceanos e correspondem a 97,2% do total de água do planeta.",c:"Essa é a descrição das águas oceânicas."},
+ {t:"correspondem a mais da metade de toda a água existente no planeta.",c:"Estão bem longe da metade: são apenas 2,8% do total."},
+ {t:"são exclusivamente as águas presentes na atmosfera, em forma de vapor.",c:"A atmosfera guarda uma parcela mínima da água; as águas continentais estão nos rios, lagos, geleiras e no subsolo."}]},
+
+{n:19,en:"As geleiras classificam-se em dois tipos:",
+ alts:[
+ {t:"calotas polares, que cobrem permanentemente as regiões de altas latitudes, e geleiras alpinas, presentes em elevadas altitudes.",c:"Correta. As geleiras são massas de gelo formadas em camadas pela compactação da neve, e concentram cerca de 76% da água doce do planeta."},
+ {t:"calotas tropicais e geleiras oceânicas.",c:"Não existem esses tipos: as geleiras se formam em altas latitudes ou em elevadas altitudes."},
+ {t:"geleiras continentais e geleiras subterrâneas.",c:"Não há geleiras subterrâneas. No subsolo ficam os lençóis freáticos e os aquíferos, que são água líquida."},
+ {t:"calotas equatoriais e geleiras de planície.",c:"A região equatorial é quente e as planícies são áreas baixas: nenhuma das duas reúne condições para formar geleiras."}]},
+
+{n:20,en:"No ciclo hidrológico, a condensação corresponde ao momento em que:",
+ alts:[
+ {t:"o vapor da atmosfera se resfria e forma as gotículas que dão origem às nuvens.",c:"Correta. Conforme as gotículas se reúnem, a nuvem fica mais densa e ocorre a precipitação."},
+ {t:"o calor do Sol transforma em vapor a água dos rios, lagos, oceanos e solos.",c:"Isso é a evaporação, a etapa anterior à condensação."},
+ {t:"as gotas caem sobre a superfície em forma de chuva, granizo ou neve.",c:"Isso é a precipitação, que acontece depois da condensação."},
+ {t:"a água penetra no solo e forma os reservatórios de água subterrânea.",c:"Isso é a infiltração, uma das etapas finais do ciclo."}]},
+
+{n:21,en:"Em áreas rurais, o uso de máquinas agrícolas pesadas e o pisoteio de gado causam a compactação do solo. Esse processo:",
+ alts:[
+ {t:"prejudica a infiltração e aumenta o escoamento superficial, agravando a erosão do solo e provocando danos às terras agricultáveis.",c:"Correta. O solo compactado tem menos espaços porosos, então a água corre por cima em vez de descer."},
+ {t:"aumenta a infiltração da água e melhora o abastecimento do lençol freático.",c:"É o contrário: a compactação fecha os espaços porosos e reduz a infiltração."},
+ {t:"não altera o caminho da água da chuva, pois o solo continua com a mesma porosidade.",c:"A porosidade justamente diminui, e é por isso que o escoamento superficial aumenta."},
+ {t:"torna o solo mais poroso e mais fértil para o cultivo.",c:"Quem aumenta a porosidade do solo é a vegetação, com suas raízes — não a compactação."}]},
+
+{n:22,en:"Assinale a alternativa que identifica corretamente o oceano mais extenso e mais profundo do planeta:",
+ alts:[
+ {t:"Pacífico, localizado entre a Ásia, a América e a Oceania.",c:"Correta. O Pacífico é o mais extenso e o mais profundo dos cinco oceanos."},
+ {t:"Atlântico, que banha a América, a Europa e a África.",c:"O Atlântico é o segundo maior oceano do mundo."},
+ {t:"Índico, localizado entre a Ásia, a África e a Oceania.",c:"O Índico é o terceiro maior oceano do mundo."},
+ {t:"Glacial Ártico, que banha a porção norte da Europa, da Ásia e da América.",c:"O Glacial Ártico é marcado pelas camadas de gelo que dificultam a navegação, e não pela extensão."}]},
+
+{n:23,en:"Sobre o Oceano Glacial Antártico, é correto afirmar que:",
+ alts:[
+ {t:"é formado pelo encontro das águas dos oceanos Pacífico, Atlântico e Índico, e parte de suas águas permanece congelada durante grande período do ano.",c:"Correta. Sua posição próxima ao polo Sul, onde as temperaturas são baixas, explica o congelamento."},
+ {t:"é o mais extenso e o mais profundo dos oceanos do planeta.",c:"Esse é o Pacífico."},
+ {t:"banha a porção norte da Europa, da Ásia e da América.",c:"Essa é a descrição do Oceano Glacial Ártico, que fica no outro polo."},
+ {t:"é o segundo maior oceano do mundo e banha a América, a Europa e a África.",c:"Essa é a descrição do Atlântico."}]},
+
+{n:24,en:"Os rios intermitentes são aqueles que:",
+ alts:[
+ {t:"secam no período de estiagem, sendo também chamados de rios temporários.",c:"Correta. Muitos afluentes do rio São Francisco, por exemplo, são rios temporários."},
+ {t:"nunca secam, mantendo água durante o ano inteiro.",c:"Esses são os rios perenes."},
+ {t:"correm apenas no subsolo, sem nunca aparecer na superfície.",c:"A água que corre no subsolo forma os lençóis freáticos e os aquíferos, e não rios intermitentes."},
+ {t:"desembocam obrigatoriamente no mar, e nunca em outro rio ou lago.",c:"Um rio pode desembocar no mar, em um lago ou em outro rio — isso não define se ele é intermitente."}]},
+
+{n:25,en:"Sobre a bacia do Amazonas, é correto afirmar que:",
+ alts:[
+ {t:"é a maior bacia hidrográfica do mundo, cobre cerca de 45% do território brasileiro e concentra 81% da disponibilidade de águas superficiais do país.",c:"Correta. Seu rio principal nasce na cordilheira dos Andes, no Peru, e recebe o nome de Amazonas a partir do encontro com o rio Negro."},
+ {t:"é formada pelas sub-bacias dos rios Paraná, Paraguai e Uruguai e abriga a hidrelétrica de Itaipu.",c:"Essa é a bacia do Prata."},
+ {t:"tem como rio principal o Tocantins, tendo o Araguaia como seu maior afluente.",c:"Essa é a bacia do Tocantins, onde fica a usina de Tucuruí."},
+ {t:"nasce na serra da Canastra, em Minas Gerais, e atravessa todo o Sertão nordestino.",c:"Essa é a bacia do São Francisco, o “Velho Chico”."}]},
+
+{n:26,en:"A bacia hidrográfica do rio Tubarão:",
+ alts:[
+ {t:"nasce na encosta da serra Geral, no município de Lauro Müller, na serra do Rio do Rastro, e engloba 18 municípios.",c:"Correta. Entre esses municípios estão Orleans, Braço do Norte, Gravatal, Capivari de Baixo, Tubarão e Jaguaruna."},
+ {t:"nasce na serra da Canastra, em Minas Gerais, e atravessa o Sertão nordestino.",c:"Essa é a descrição do rio São Francisco."},
+ {t:"nasce na cordilheira dos Andes, no Peru, e recebe o nome de Solimões antes de chegar ao Brasil.",c:"Essa é a descrição do rio Amazonas."},
+ {t:"é formada pelas sub-bacias dos rios Paraná, Paraguai e Uruguai.",c:"Essa é a bacia do Prata."}]},
+
+{n:27,en:"Sobre o Sistema Aquífero Guarani, é correto afirmar que:",
+ alts:[
+ {t:"ocupa cerca de 1,2 milhão de km², estendendo-se por Brasil, Argentina, Paraguai e Uruguai, com 66% de sua área em território brasileiro.",c:"Correta. Por ultrapassar as fronteiras dos países, sua exploração exige acordos internacionais."},
+ {t:"está inteiramente localizado em território brasileiro, na região amazônica.",c:"O aquífero brasileiro da região amazônica é o SAGA. O Guarani se estende por quatro países."},
+ {t:"é um rio subterrâneo que corre até desembocar no oceano Atlântico.",c:"Aquífero não é rio: é uma unidade rochosa porosa e permeável onde a água se acumula."},
+ {t:"é a maior geleira alpina do hemisfério sul.",c:"Aquíferos são reservatórios de água líquida no subsolo, e não massas de gelo."}]},
+
+{n:28,rom:true,en:"Sobre os rios e as bacias hidrográficas, analise as afirmativas:",
+ afirm:["I. A nascente é o ponto onde o rio nasce, e a foz é o local onde ele termina e deságua.",
+        "II. Os rios de planície apresentam grande potencial para a geração de energia hidrelétrica por causa de suas cachoeiras.",
+        "III. Os afluentes são os rios que deságuam em um rio principal.",
+        "IV. A mata ciliar auxilia na infiltração das águas e é imprescindível para a preservação dos recursos hídricos."],
+ alts:[
+ {t:"Apenas I, III e IV estão corretas.",c:"Correta. A afirmativa II é a errada: quem tem cachoeiras e grande potencial hidrelétrico é o rio de PLANALTO. O rio de planície corre devagar, forma meandros e favorece o transporte."},
+ {t:"Apenas I e II estão corretas.",c:"A II é falsa, e as afirmativas III e IV também estão corretas."},
+ {t:"Apenas II e IV estão corretas.",c:"A II é falsa, e a afirmativa I está correta: nascente é onde o rio nasce e foz é onde ele deságua."},
+ {t:"I, II, III e IV estão corretas.",c:"A II está errada: cachoeiras e potencial hidrelétrico são característicos dos rios de planalto, não dos de planície."}]},
+
+{n:29,en:"Em algumas cidades, os cursos dos rios foram modificados para que seus trajetos ficassem mais retos e sem meandros. Sobre essa modificação, chamada de retificação, e sobre o desmatamento da mata ciliar, é correto afirmar que:",
+ alts:[
+ {t:"a retificação altera drasticamente a dinâmica das águas, e o desmatamento da mata ciliar acelera os processos erosivos das margens e causa assoreamento.",c:"Correta. O assoreamento prejudica o escoamento das águas fluviais, agravando ainda mais o problema das cheias."},
+ {t:"a retificação resolve definitivamente o problema das cheias e enchentes nas cidades.",c:"Nem a retificação nem a canalização resolvem a questão das cheias e enchentes — esse é justamente um dos motivos pelos quais essas obras são questionadas."},
+ {t:"o desmatamento da mata ciliar melhora o escoamento das águas, pois retira obstáculos das margens.",c:"É o contrário: sem a mata ciliar, as margens sofrem mais erosão e o material erodido assoreia o rio, prejudicando o escoamento."},
+ {t:"as duas intervenções não provocam nenhum impacto ambiental, pois apenas organizam o espaço urbano.",c:"Ambas provocam impactos reconhecidos sobre a dinâmica das águas e sobre as margens dos rios."}]},
+
+{n:30,en:"Antes de ser distribuída para as casas, a água captada dos mananciais, rios e aquíferos passa por estações de tratamento, onde:",
+ alts:[
+ {t:"verifica-se a qualidade da água, retira-se uma série de partículas impróprias para o consumo e adiciona-se flúor, para prevenir cáries na população.",c:"Correta. Depois desse processo a água pode ser distribuída, e as tubulações precisam de manutenção constante para evitar vazamentos e contaminação."},
+ {t:"a água é salgada artificialmente, para ficar mais estável durante o transporte.",c:"A água tratada precisa ser potável; adicionar sal a tornaria imprópria para o consumo."},
+ {t:"a água é congelada para formar novos reservatórios subterrâneos.",c:"Os reservatórios subterrâneos se formam naturalmente pela infiltração da água da chuva."},
+ {t:"retira-se todo o oxigênio da água, para evitar a formação de algas nas tubulações.",c:"O que se retira são as partículas impróprias para o consumo; o flúor é adicionado para prevenir cáries."}]}
+];
+
+prepararQuestoes(QUESTOES,987654321);
+
+var KEY='geo6_relevo_hidrosfera_simulado_v1';
+var store=criarStore(KEY,{marc:{},corrigido:false,gabarito:false,quando:''});
+var S=store.ler();
+var CHAVE_COD='geo6_relevo_hidrosfera_simulado_codigo';
+
+function salvar(){S.quando=agoraBR();S.acertos=acertos();S.total=QUESTOES.length;store.gravar(S);carimbo();}
+function carimbo(){document.getElementById('status').textContent='💾 Salvo automaticamente — última vez: '+(S.quando||agoraBR());}
+function acertos(){var c=0;QUESTOES.forEach(function(q){if(S.marc[q.n]===q.certa)c++;});return c;}
+function respondidas(){var c=0;QUESTOES.forEach(function(q){if(S.marc[q.n]!==undefined)c++;});return c;}
+
+function render(){
+  var alvo=document.getElementById('questoes');alvo.innerHTML='';
+  QUESTOES.forEach(function(q){
+    var sec=document.createElement('section');sec.className='questao';
+    var h='<span class="qnum'+(q.rom?' rom':'')+'">Questão '+pad2(q.n)+(q.rom?' · números romanos':'')+'</span>'+
+          '<p class="enunciado">'+q.en+'</p>';
+    if(q.afirm){h+='<div class="afirm">';q.afirm.forEach(function(a){h+='<p>'+a+'</p>';});h+='</div>';}
+    h+='<div class="alts">';
+    q.ordem.forEach(function(a,i){
+      var cls='alt';
+      if(S.corrigido){cls+=(i===q.certa)?' certa':' errada';}
+      else if(S.marc[q.n]===i)cls+=' marcada';
+      h+='<button type="button" class="'+cls+'" data-q="'+q.n+'" data-i="'+i+'"'+(S.corrigido?' disabled':'')+'>'+
+         '<span class="letra">'+LETRAS[i]+')</span><span>'+a.t+'</span></button>';
+      if(S.corrigido)h+='<p class="coment'+(i===q.certa?' ok':'')+'">'+(i===q.certa?'✅ ':'▫️ ')+a.c+'</p>';
+    });
+    h+='</div>';
+    if(S.corrigido){
+      var m=S.marc[q.n];
+      h+='<p class="coment" style="padding-left:0;margin-top:12px"><b>'+
+         (m===q.certa?'✅ Você acertou.':(m===undefined?'⬜ Você não respondeu esta questão.':'❌ Você marcou a letra '+LETRAS[m]+'.'))+
+         '</b> A resposta certa é a letra <b>'+LETRAS[q.certa]+'</b>.</p>';
+    }
+    sec.innerHTML=h;alvo.appendChild(sec);
+  });
+  document.querySelectorAll('.alt').forEach(function(b){
+    b.addEventListener('click',function(){
+      if(S.corrigido)return;
+      S.marc[parseInt(b.dataset.q,10)]=parseInt(b.dataset.i,10);
+      salvar();render();
+    });
+  });
+  progresso();
+  document.getElementById('btCorrigir').style.display=S.corrigido?'none':'inline-block';
+  if(S.corrigido)mostrarResultado();else document.getElementById('resultado').innerHTML='';
+}
+
+function progresso(){
+  var r=respondidas();
+  document.getElementById('barra').style.width=(r/QUESTOES.length*100)+'%';
+  document.getElementById('txtProg').textContent=r+' de '+QUESTOES.length+' respondidas'+(S.corrigido?' — simulado corrigido.':'.');
+}
+
+function mostrarResultado(){
+  var ac=acertos(),tot=QUESTOES.length,pc=Math.round(ac/tot*100);
+  var cod=gerarCodigo('SIM',ac,CHAVE_COD);
+  var msg=pc>=80?'Muito bem! Você está pronto para a avaliação.':pc>=60?'Bom resultado. Volte ao Resumo nos assuntos que escaparam e refaça as questões erradas.':'Vale reler o Resumo com calma, rever as camadas da Leitura Guiada e tentar de novo.';
+  document.getElementById('resultado').innerHTML=
+    '<div class="placar" style="border-color:#c0392b"><p style="margin:0 0 6px;color:var(--texto2)">Seu resultado no simulado</p>'+
+    '<p class="nota" style="color:#e0625a">'+ac+' / '+tot+'</p>'+
+    '<p style="margin:8px 0 0">'+pc+'% de acerto. '+msg+'</p>'+
+    '<p style="margin:16px 0 4px"><b>Código de liberação do gabarito:</b></p>'+
+    '<p class="codigo">'+cod+'</p>'+
+    '<p style="font-size:14.5px;color:var(--texto2);margin:6px 0 0">Anote este código: ele abre o gabarito comentado aqui embaixo e também o Relatório para os pais, na página inicial.</p>'+
+    '</div>'+
+    '<div class="questao" id="portao"><p class="enunciado">🔐 Gabarito comentado</p>'+
+    '<p style="font-size:15.5px;color:var(--texto2)">Digite o código acima para liberar os comentários de cada alternativa.</p>'+
+    '<div class="entrada-cod"><input type="text" id="cod" placeholder="SIM-00-XX" autocomplete="off">'+
+    '<button class="prova" id="btAbrir">Abrir gabarito</button></div>'+
+    '<p class="aviso" id="avCod"></p></div>';
+  document.getElementById('btAbrir').onclick=function(){
+    var v=(document.getElementById('cod').value||'').trim().toUpperCase();
+    if(v===cod){S.gabarito=true;salvar();render();}
+    else{document.getElementById('avCod').textContent='⚠️ Código incorreto. Confira as letras e os números — o código é o que aparece logo acima.';}
+  };
+  if(!S.gabarito){
+    document.querySelectorAll('.coment').forEach(function(p){p.style.display='none';});
+  }else{
+    var pt=document.getElementById('portao');
+    if(pt)pt.innerHTML='<p class="enunciado">🔓 Gabarito comentado liberado</p><p style="font-size:15.5px;color:var(--texto2);margin:0">Os comentários estão em cada questão acima: a alternativa correta em verde e cada errada em cinza, com a explicação de por que não serve.</p>';
+  }
+}
+
+document.getElementById('btCorrigir').onclick=function(){
+  if(respondidas()<QUESTOES.length){
+    aviso('Faltam questões','Você ainda não marcou todas as 30 questões. Responda todas antes de corrigir — na prova de verdade também não dá para deixar em branco.');
+    return;
+  }
+  S.corrigido=true;salvar();render();
+  document.getElementById('resultado').scrollIntoView({behavior:'smooth',block:'start'});
+};
+
+document.getElementById('btExportar').onclick=function(){
+  var d={marc:S.marc,corrigido:S.corrigido,quando:S.quando,acertos:acertos(),total:QUESTOES.length};
+  var blob=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='simulado-geografia6-relevo-hidrosfera.json';a.click();
+};
+document.getElementById('btImportar').onclick=function(){document.getElementById('arquivo').click();};
+document.getElementById('arquivo').onchange=function(e){
+  var f=e.target.files[0];if(!f)return;
+  var r=new FileReader();
+  r.onload=function(){
+    try{var d=JSON.parse(r.result);S.marc=d.marc||{};S.corrigido=!!d.corrigido;salvar();render();
+      aviso('Pronto','Seu progresso foi importado com sucesso.');}
+    catch(err){aviso('Ops','Não consegui ler esse arquivo. Ele precisa ser o .json exportado por este material.');}
+  };
+  r.readAsText(f);
+};
+document.getElementById('btZerar').onclick=function(){
+  aviso('Zerar tudo?','Isso apaga todas as respostas deste simulado e o código de liberação. Não dá para desfazer.',function(){
+    store.limpar();try{localStorage.removeItem(CHAVE_COD);}catch(e){}
+    S={marc:{},corrigido:false,gabarito:false,quando:''};render();carimbo();
+  },true);
+};
+
+render();carimbo();
+</script>
+</body>
+</html>
